@@ -89,7 +89,7 @@ x contra o blob de outro na versão y e calcula o que foi mudado sob demanda
 - Todos os arquivos acima são monitorados por git. Os que estão no .gitignore nem untracked chegam a ser;
 - Build: arquivos nossos --> arquivos finais que serão consumidos pelo navegador (eles ficam na .next/)
 
-# Git ammend e git push
+# Git amend e git push
 
 - *git log* --oneline
   - logs em uma linha, resumidos
@@ -108,5 +108,24 @@ Your branch is ahead of 'origin/main' by 1 commit.
   - Isso significa que a sua branch main local está a frente da main origin (online) em 1 commit
 - origin/main = na origin online, a branch main
 - local/main = no rep. local, a branch main
+- git push: local --> remoto/online (empurrar)
+- git pull: local <-- remoto/online (puxar)
+- packtage.json: metadados, scripts e dependencias;
+- packtage-lock.json: toma nota das dependencias principais e dependencias das dependencias;
+  - é exclusivamente sobre dependencias;
+- Sobre o problema do git --amend:
+  - se você faz um --amend, ele volta no tempo,
+  pega a alteração do seu commit mais atual e 
+  mescla com o commit anterior, gerando uma NOVA
+  foto, um NOVO commit;
+  - com isso, o commit anterior que você tinha foi
+  descartado e agora você tem um novo commit que 
+  não tá lá na origin/main;
+  - isso gera inconsistência;
+  - usando o git push --force você força o push
+  e faz o origin aceitar as alterações. O mais recente
+  commit do origin será substituido pelo commit mais
+  recente do seu rep. local;
+
 
 
