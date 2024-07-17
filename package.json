@@ -1,0 +1,17 @@
+{
+  "name": "clone-tabnews-lucasnbat",
+  "version": "1.0.0",
+  "description": "Implementação do TabNews como forma de acompanhar o curso do Filipe Deschamps.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"next dev"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "next": "^13.1.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
