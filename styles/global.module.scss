@@ -20,7 +20,8 @@
         border-radius: 4px;
         color: white;
         padding: 10px 20px;
-        font-size: 16px;
+        font-weight: bolder;
+        font-size: larger;
         cursor: pointer;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
@@ -59,6 +60,7 @@
 
     img {
         width: 300px;
+        padding: 0 5px;
     }
 
     span {
