@@ -127,5 +127,17 @@ Your branch is ahead of 'origin/main' by 1 commit.
   commit do origin será substituido pelo commit mais
   recente do seu rep. local;
 
+# Client x Server
+
+- Cliente é quem requisita, servidor é quem supre um serviço;
+- Um ator não é limitado apenas a ser só server ou só client, ele pode assumir papéis diferentes dependendo da relação;
+- Comunicação é feita por protocolos;
+- Deploy: depositar arquivos nos servidores que vão fornecer serviço;
+- Hoje:
+  - Máquina local --> C.I. (Continuous Integrator) --> Build --> Produção;
+  - C.I. = contém testes automatizados;
+  - Build = ocorre numa máquina que vai criar a versão final de código que rodará na internet;
+  - Produção: ...produção!
+
 
 

@@ -1,6 +1,45 @@
+import { useState } from "react";
+import GitComponent from "../components/GitComponent";
+import styles from '../styles/global.module.scss'
+
 function Home() {
+    const [showModal, setShowModal] = useState(false);
+
+    function showModalBeforeFollow() {
+        setShowModal(!showModal);
+    }
+
     return (
-        <div>Mensagem toperson 5</div>
+        <>
+            <div className={styles.container}>
+                <div className={styles.contentContainer}>
+                    <div className={styles.textContainer}>
+                        <p>TINGUILINGUILINGUILINGUI</p>
+                        <p>TINGUILINGUILINGUILINGUI</p>
+                        <p>TINGUILINGUILINGUILINGUI</p>
+                        <p>TINGUILINGUILINGUILINGUI</p>
+                    </div>
+                    <GitComponent />
+
+                    <button onClick={showModalBeforeFollow}>
+                        Quero receber inteligência
+                    </button>
+                </div>
+            </div>
+
+            {showModal && (
+                <div className={styles.modalContainer}>
+                    <div className={styles.modalContentContainer}>
+                        <img src="/crazy-cat.webp" />
+                        <span>MIAAAAAAAARRRRR TOMI KKKKKKK</span>
+
+                        <button onClick={showModalBeforeFollow}>
+                            Me devolve pro tinguilingui, doente
+                        </button>
+                    </div>
+                </div>
+            )}
+        </>
     );
 }
 
