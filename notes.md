@@ -139,5 +139,27 @@ Your branch is ahead of 'origin/main' by 1 commit.
   - Build = ocorre numa máquina que vai criar a versão final de código que rodará na internet;
   - Produção: ...produção!
 
+# Mais deploys
+
+- Minimal Privilege Principle: principio do menor priilégio;
+  - Libera o básico de acessos e depoise xpanda conforme necessidade;
+- Deploys na vercel sempre ficam com url identificando eles;
+  - branchs tem url unica;
+  - commits tem url unica;
+- Isso permite você, em casos de problemas com atualizações, voltar para um deploy que deu certo e apontar o dominio oficial publico da vercel para esse deploy funcional;
+
+# Muralhas 
+
+- Muralha de tecnologia x Muralha de negócio;
+
+# Orgânico x Impressora 3D
+
+- Over Engineering: complicar demais implementação de funcionalidade que poderia ter sido mais simples;
+- Feature Creep: tanta feature que mais atrapalha do que ajuda na UX;
+
+# Moral x Prática
+
+- Não dá para mudar os resultados passados, mas escolha ser você quem determina a interpretação desses resultados e o que vai fazer no futuro;
+  - Não aumente as dores da realidade; bola para frente.
 
 
