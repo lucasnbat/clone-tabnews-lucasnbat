@@ -14,10 +14,9 @@ function Home() {
             <div className={styles.container}>
                 <div className={styles.contentContainer}>
                     <div className={styles.textContainer}>
-                        <p>TINGUILINGUILINGUILINGUI</p>
-                        <p>TINGUILINGUILINGUILINGUI</p>
-                        <p>TINGUILINGUILINGUILINGUI</p>
-                        <p>TINGUILINGUILINGUILINGUI</p>
+                        <p>
+                            Soy el gatito árabe, ¿quieres recibir inteligencia? Haga clic en mi enlace
+                        </p>
                     </div>
                     <GitComponent />
 
