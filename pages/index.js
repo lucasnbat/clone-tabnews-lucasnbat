@@ -22,7 +22,7 @@ function Home() {
                     <GitComponent />
 
                     <button onClick={showModalBeforeFollow}>
-                        Quero receber inteligência
+                        Receba a inteligência
                     </button>
                 </div>
             </div>
