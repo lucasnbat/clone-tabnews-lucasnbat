@@ -9,7 +9,7 @@ function Home() {
         setShowModal(!showModal);
     }
 
-    const string = 'Soy el gatito árabe, ¿quieres recibir inteligencia? Haga clic en mi enlace';
+    const string = 'Soy el gatito árabe, ¿quieres recibir inteligencia?' + '\n' + 'Haga clic en mi enlace';
 
     return (
         <>
