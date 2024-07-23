@@ -37,13 +37,16 @@
 .textContainer {
     font-weight: bolder;
     font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .modalContainer {
     display: flex;
     flex-direction: column;
-    max-width: 900px; /* Mantendo um tamanho máximo */
-    margin: 0 auto; /* Centralizar horizontalmente */
+    max-width: 900px;
+    /* Mantendo um tamanho máximo */
+    margin: 0 auto;
+    /* Centralizar horizontalmente */
 }
 
 .modalContentContainer {
@@ -54,11 +57,16 @@
     justify-content: center;
     gap: 2rem;
     position: fixed;
-    top: 0; /* Garantir que o modal esteja no topo */
-    left: 0; /* Garantir que o modal esteja à esquerda */
-    width: 100%; /* Preencher a largura total da tela */
-    height: 100vh; /* Preencher a altura total da tela */
-    margin: 0; /* Removido auto margin */
+    top: 0;
+    /* Garantir que o modal esteja no topo */
+    left: 0;
+    /* Garantir que o modal esteja à esquerda */
+    width: 100%;
+    /* Preencher a largura total da tela */
+    height: 100vh;
+    /* Preencher a altura total da tela */
+    margin: 0;
+    /* Removido auto margin */
 
     img {
         width: 400px;
@@ -68,7 +76,8 @@
         color: #fff;
         font-weight: bolder;
         font-size: 30px;
-        text-align: center; /* Centralizar o texto */
+        text-align: center;
+        /* Centralizar o texto */
     }
 
     button {
