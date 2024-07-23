@@ -9,13 +9,15 @@ function Home() {
         setShowModal(!showModal);
     }
 
+    const string = 'Soy el gatito árabe, ¿quieres recibir inteligencia? Haga clic en mi enlace';
+
     return (
         <>
             <div className={styles.container}>
                 <div className={styles.contentContainer}>
                     <div className={styles.textContainer}>
                         <p>
-                            Soy el gatito árabe, ¿quieres recibir inteligencia? Haga clic en mi enlace
+                            {string.toUpperCase()}
                         </p>
                     </div>
                     <GitComponent />
