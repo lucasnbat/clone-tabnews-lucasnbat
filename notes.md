@@ -6,19 +6,18 @@
 
 - Para listar versões do node: nvm ls
 
-- Para escolher uma: *nvm install + versão* (ex: lts/hydrogen);
+- Para escolher uma: _nvm install + versão_ (ex: lts/hydrogen);
 
 - Cada versão tem um apelido de elemento químico, pelo jeito;
 
 - lts: dão suporte por mais tempo; dão compatibilidade entre subversões;
 
 - nvm alias default -> comando que aponta qual a versão do nodejs padrão
-  os terminais novos devem ler para inicializar;
-    -*nvm alias default lts/hydrogen*;
+  os terminais novos devem ler para inicializar; -_nvm alias default lts/hydrogen_;
 
 - Arquivos com final "rc" significa "run commands" ou comandos de inicalização
-    - o .nvmrc serve para reocmendarmos a versão de nodejs que nossos visitantes
-      de rep vão ser recomendados a usar;
+  - o .nvmrc serve para reocmendarmos a versão de nodejs que nossos visitantes
+    de rep vão ser recomendados a usar;
 
 # Nextjs
 
@@ -33,10 +32,9 @@
 - npm install react-dom@18.2.0 -> renderizador de HTML do react
   - existem vários, tais como o react native (mobile), renderizadores 3d...
 
-
 ## Arquivo manisfesto
 
-- É o packtage.json, com todas as dependencias e bibliotecas usadas na hora 
+- É o packtage.json, com todas as dependencias e bibliotecas usadas na hora
   de desenvolver e rodar;
 
 # Protocolos
@@ -48,17 +46,19 @@
 - Protocolo: regras que duas partes concordam para se comunicarem entre si;
 
 - São empilháveis;
+
   - HTTP usa regras para comunicar entre cliente e servidor;
     - Essas informações podem ser transitadas via TCP;
       - QUe por sua vez usa o Internet Protocol (IP)
 
 - Protocolos com mais verificação de perda de info como TCP geram custo;
+
   - Nem sempre compensa pagar esse custo (caso de vídeos zoom, com protocolo UDP)
   - Quem compensa a perda de frames geralmente são os humanos que estão na reunião zoom;
 
 - No UDP, se há perda de movimento de um objeto na tela de posição A para posição B,
   ele preenche esse limbo com dataframes intermediários;
-  - Isso não ocorre no TCP, o qual ao perceber a perda de um dado na transmissão 
+  - Isso não ocorre no TCP, o qual ao perceber a perda de um dado na transmissão
     negocia o re-envio dessa informação, ocasionando "travamentos" na fluidez do objeto;
 
 # Roteamento com Nextjs
@@ -73,24 +73,25 @@
 
 - Merge conflict: quando alterações de duas pessoas causam conflito na execução
   da versão de código de cada uma;
-    - Algo como uma pessoa está codando contado que existe um bloco x de código e 
-      a outra pessoa deletou o bloco x
-    - Aí abre-se um Merge conflict que só será resolvido por um humano;
+
+  - Algo como uma pessoa está codando contado que existe um bloco x de código e
+    a outra pessoa deletou o bloco x
+  - Aí abre-se um Merge conflict que só será resolvido por um humano;
 
 - O Git tem o github como cópia de referencia e você tem vários clones que voce
   clonou em sua maquina
 
 - O Git tira foto do estado dos arquivos, ou seja ,coloca identificador em
-cada um deles e guarda eles em pacotes chamado blobs (binary large object). Conjunto
-de blobs é uma foto;
+  cada um deles e guarda eles em pacotes chamado blobs (binary large object). Conjunto
+  de blobs é uma foto;
 
 - Depois, se dos arquivos que você guardou antes você só alterou alguns, o git
-vai tirar uma foto nova inteira apenas dos arquivos alterados (vai juntar apenas os 
-blobs dos arquivos alterados numa nova foto)e o que ficou inalterado ele vai apontar
-para os blobs da foto anterior;
+  vai tirar uma foto nova inteira apenas dos arquivos alterados (vai juntar apenas os
+  blobs dos arquivos alterados numa nova foto)e o que ficou inalterado ele vai apontar
+  para os blobs da foto anterior;
 
 - Quando você precisa de ver as diferenças, o git joga um blob de arquivo numa versão
-x contra o blob de outro na versão y e calcula o que foi mudado sob demanda
+  x contra o blob de outro na versão y e calcula o que foi mudado sob demanda
 
 # Estágios dos gits
 
@@ -100,13 +101,15 @@ x contra o blob de outro na versão y e calcula o que foi mudado sob demanda
   e deixa o restante de fora (há casos assim onde você modifica vários para descobrir que resolveria o problema alterando apenas uma linha);
 
 - git status
+
   - untracked: arquivos não rastreados que mal foram mexidos. Você alterou, ele vira modified;
-  - ('modified'): não rastreado, mudanças que ainda não foram adicionadas com *git add .*
-  - Staged: mudanças que aparecem como "Changes to be committed" após o *git add .*
-  - commited: mudanças que aparecem como commit com hash após *git commit* e você digitar o texto do commit no arquivo do editor
+  - ('modified'): não rastreado, mudanças que ainda não foram adicionadas com _git add ._
+  - Staged: mudanças que aparecem como "Changes to be committed" após o _git add ._
+  - commited: mudanças que aparecem como commit com hash após _git commit_ e você digitar o texto do commit no arquivo do editor
 
 - Basicamente:
-  - **Untracked** --> qualquer alteração --> **modified** --> *git add* --> **staged** --> *git commit* --> **commited**
+
+  - **Untracked** --> qualquer alteração --> **modified** --> _git add_ --> **staged** --> _git commit_ --> **commited**
 
 - Todos os arquivos acima são monitorados por git. Os que estão no .gitignore nem untracked chegam a ser;
 
@@ -114,24 +117,26 @@ x contra o blob de outro na versão y e calcula o que foi mudado sob demanda
 
 # Git amend e git push
 
-- *git log* --oneline
+- _git log_ --oneline
+
   - logs em uma linha, resumidos
 
-- *git diff* calcula a diferença entre os arquivos salvos nos commits x o que você tem atualmente na sua área de trabalho
+- _git diff_ calcula a diferença entre os arquivos salvos nos commits x o que você tem atualmente na sua área de trabalho
 
-- Caracter *\n* basicamente indica o caracter newline, que basicamente
-é um caractere que indica FIM DA LINHA. Se não tem ele, para os computadores, meio que nem linha aquele trecho é.
+- Caracter _\n_ basicamente indica o caracter newline, que basicamente
+  é um caractere que indica FIM DA LINHA. Se não tem ele, para os computadores, meio que nem linha aquele trecho é.
 
 - Por isso você consegue selecionar um pequeno espaço após cada linha
-de código. É o \n, invibilizado pelo editor para não atrapalhar sua leitura;
+  de código. É o \n, invibilizado pelo editor para não atrapalhar sua leitura;
 
-- *git commit --amend*: com isso você consegue pegar o arquivo staged e emendar a alteração dele com a do commit anterior;
+- _git commit --amend_: com isso você consegue pegar o arquivo staged e emendar a alteração dele com a do commit anterior;
 
 # Sobre push e outros comandos para git online
 
 - "On branch main
-Your branch is ahead of 'origin/main' by 1 commit.
+  Your branch is ahead of 'origin/main' by 1 commit.
   (use "git push" to publish your local commits)"
+
   - Isso significa que a sua branch main local está a frente da main origin (online) em 1 commit
 
 - origin/main = na origin online, a branch main
@@ -145,21 +150,22 @@ Your branch is ahead of 'origin/main' by 1 commit.
 - packtage.json: metadados, scripts e dependencias;
 
 - packtage-lock.json: toma nota das dependencias principais e dependencias das dependencias;
+
   - é exclusivamente sobre dependencias;
 
 - Sobre o problema do git --amend:
   - se você faz um --amend, ele volta no tempo,
-  pega a alteração do seu commit mais atual e 
-  mescla com o commit anterior, gerando uma NOVA
-  foto, um NOVO commit;
+    pega a alteração do seu commit mais atual e
+    mescla com o commit anterior, gerando uma NOVA
+    foto, um NOVO commit;
   - com isso, o commit anterior que você tinha foi
-  descartado e agora você tem um novo commit que 
-  não tá lá na origin/main;
+    descartado e agora você tem um novo commit que
+    não tá lá na origin/main;
   - isso gera inconsistência;
   - usando o git push --force você força o push
-  e faz o origin aceitar as alterações. O mais recente
-  commit do origin será substituido pelo commit mais
-  recente do seu rep. local;
+    e faz o origin aceitar as alterações. O mais recente
+    commit do origin será substituido pelo commit mais
+    recente do seu rep. local;
 
 # Client x Server
 
@@ -180,15 +186,17 @@ Your branch is ahead of 'origin/main' by 1 commit.
 # Mais deploys
 
 - Minimal Privilege Principle: principio do menor priilégio;
+
   - Libera o básico de acessos e depoise xpanda conforme necessidade;
 
 - Deploys na vercel sempre ficam com url identificando eles;
+
   - branchs tem url unica;
   - commits tem url unica;
 
 - Isso permite você, em casos de problemas com atualizações, voltar para um deploy que deu certo e apontar o dominio oficial publico da vercel para esse deploy funcional;
 
-# Muralhas 
+# Muralhas
 
 - Muralha de tecnologia x Muralha de negócio;
 
@@ -204,14 +212,15 @@ Your branch is ahead of 'origin/main' by 1 commit.
 
 # Como organizar tarefas
 
-- Conceito relevante: *saldo positivo x saldo negativo*
+- Conceito relevante: _saldo positivo x saldo negativo_
+
   - Fazer mais com que menos;
   - Qualquer tarefa que abale esse senso natural de saldo na sua mente se torna cansativa;
   - Ex: cenário ruim do nível 4 (sobrecarregar programador com rotinas de gestão)
 
 - Nível 1: anotação para apenas lembrar do que precisa ser feito. Custo de energia (para produzir essa anotação) e de aquecimento (rapidez de verificação) devem ser baixíssimos. Ex: folhas de papel A4 com as tarefas;
 
-- Nível 2: *lembrar de todas as coisas a serem feitas com tempo de aquecimento baixo, mas em grupo*. Ótimo ter checkboxes para marcar de forma parcial e total. Ex: quadro na geladeira;
+- Nível 2: _lembrar de todas as coisas a serem feitas com tempo de aquecimento baixo, mas em grupo_. Ótimo ter checkboxes para marcar de forma parcial e total. Ex: quadro na geladeira;
 
 - Nível 3: expandir conhecimento. Utilizar ferramentas que tem tempo de produção maior (trello, github, etc) contendo mais informações e um tempo de aquecimento maior também (demora mais para visualizar pois precisa carregar as páginas, etc);
 
@@ -234,6 +243,15 @@ Your branch is ahead of 'origin/main' by 1 commit.
   - 1º estágio - Início: cérebro identifica oportunidade e libera pequenas doses de dopamina em regiões do cérebro para você gerar movimento e ir em direção ao objetivo;
   - 2º estágio - Progresso: cérebro libera novas doses maiores à medida que o caminho tomado pelo seu movimento começa a gerar resultado. estímulo para concluir o movimento;
   - 3º estágio - Final: caso o movimento produza um resultado que é "aprovado", uma dose final e maior de dopamina é liberada e o evento mexe com as estruturas do cérebro, modelando-o;
-   
 
+# Configurando formatadores
 
+- editorconfig: editor enquanto você digita;
+- prettier: ajusta inclusive códigos já existentes;
+
+- comandos:
+  - npm i prettier -D = instala como dependencia de desenvolvimento;
+  - adicione {"lint:check": "prettier --check ."} no package.json;
+  - Instale a extensão do prettier e insira ele como formatador padrão do vscode;
+  - Habilite o formatar ao salvar;
+  - Autosave: desabilite. Isso vai ajudar para quando fazer testes automatizados.
