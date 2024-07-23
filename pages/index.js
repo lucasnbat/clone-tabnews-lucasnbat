@@ -9,7 +9,8 @@ function Home() {
         setShowModal(!showModal);
     }
 
-    const string = 'Soy el gatito árabe, ¿quieres recibir inteligencia?' + '\n' + 'Haga clic en mi enlace';
+    const stringHeader = 'Soy el gatito árabe, ¿quieres recibir inteligencia?';
+    const stringBody = 'Clic en mi enlace'
 
     return (
         <>
@@ -17,7 +18,10 @@ function Home() {
                 <div className={styles.contentContainer}>
                     <div className={styles.textContainer}>
                         <p>
-                            {string.toUpperCase()}
+                            {stringHeader.toUpperCase()}
+                        </p>
+                        <p>
+                            {stringBody.toUpperCase()}
                         </p>
                     </div>
                     <GitComponent />
