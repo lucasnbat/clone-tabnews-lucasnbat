@@ -255,3 +255,29 @@
   - Instale a extensão do prettier e insira ele como formatador padrão do vscode;
   - Habilite o formatar ao salvar;
   - Autosave: desabilite. Isso vai ajudar para quando fazer testes automatizados.
+
+# Resoluções de DNS
+
+- Seu computador contata o DNS server, pega o ip referente ao endereço que você pesquisou e depois o seu pc usa esse ip para se referir diretamente ao servidor que contem os serviços que você quer utilizar;
+
+- Domain Name System;
+
+- Converte nome em endereço IP ("resolver");
+
+- É como uma tabelona que anota o nome e o endereço relativo;
+  - Um ip pode mudar, mas aí o nome continua, não impacta no domínio;
+
+- Você faz a requsiição primeiramente para um recursive server;
+  - Esse recursive server vai pedir para um root server (um dos servidores dns poderosos lá) se ele sabe qual é o ip referente àquele domínio;
+
+- tabnews.com.br.
+  - "termina" com ponto. O root server vai ler de trás para frente;
+  - "." indica o root server;
+  - ".br" é o TLD, Top Level Domain. E o root server sabe qual é a lista dos servidores que são dos TLD. Os roots servers sabem quais os ips dos servidores dos TLD;
+    - ccTLDs = country code tld domains - para países, .br, .pt, etc
+    - gTLDs = generic TLDs como o .com, .org, .dev, .bradesco
+  - Depois disso, então, o computador vai pergar a lista de nomes dos tlds devolvida pelo root server e perguntar onde está o dominio tabnews.com.br;
+    - Esse TLD só retorna onde está o Authoritative Server,o que tem as informações, registros do seu domínio tabnews.com.br
+    - Dentro desse pacotinho de informações está o ip do servidor da sua aplicação;
+    - Ele devolve esse ip para seu computador usar na requisição para o servidor final;
+  - Para agilizar as requisições futuras, pode ser utilizado cache em cada um desses servidores que foram consultados;
