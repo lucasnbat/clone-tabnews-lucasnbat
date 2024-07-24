@@ -281,3 +281,17 @@
     - Dentro desse pacotinho de informações está o ip do servidor da sua aplicação;
     - Ele devolve esse ip para seu computador usar na requisição para o servidor final;
   - Para agilizar as requisições futuras, pode ser utilizado cache em cada um desses servidores que foram consultados;
+
+# Registrando um domínio próprio
+
+- Para registrar um dominio você tem que ir atrás de um registor 
+  (registrador, como registro.br, uolhost, hostgator, locaweb...);
+- É como se eles fossem vivo, claro, tim... e você pode migrar entre
+  registradores também;
+- NIC.br = Nucleo de Informação e Controle do .br - denominado "Registry" ou "Registro" no schema do Deschamps
+  - Ele que tem todos os endereços .br possiveis disponiveis
+  - Ele é consultado pelo registro.br na hora que você coloca o dominio que vc quer la
+  - E retorna se tá disponivel ou não;
+  - Se estiver disponivel, aí o seu registrador (hostgator, locaweb)
+    passa as info para o Registry e o Registry insere esse registro na lista de TLDs consultaveis apontando para o seu Authoritative Server
+- A compra de um dominio passa pela escolha do dominio, cadastro simples, confirmação de usuário e pagamento.
