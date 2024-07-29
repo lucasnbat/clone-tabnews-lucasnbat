@@ -6,14 +6,14 @@
 
 - Para listar versões do node: nvm ls
 
-- Para escolher uma: _nvm install + versão_ (ex: lts/hydrogen);
+- Para escolher uma: `nvm install + versão` (ex: lts/hydrogen);
 
 - Cada versão tem um apelido de elemento químico, pelo jeito;
 
 - lts: dão suporte por mais tempo; dão compatibilidade entre subversões;
 
 - nvm alias default -> comando que aponta qual a versão do nodejs padrão
-  os terminais novos devem ler para inicializar; -_nvm alias default lts/hydrogen_;
+  os terminais novos devem ler para inicializar; -`nvm alias default lts/hydrogen`;
 
 - Arquivos com final "rc" significa "run commands" ou comandos de inicalização
   - o .nvmrc serve para reocmendarmos a versão de nodejs que nossos visitantes
@@ -103,13 +103,13 @@
 - git status
 
   - untracked: arquivos não rastreados que mal foram mexidos. Você alterou, ele vira modified;
-  - ('modified'): não rastreado, mudanças que ainda não foram adicionadas com _git add ._
-  - Staged: mudanças que aparecem como "Changes to be committed" após o _git add ._
-  - commited: mudanças que aparecem como commit com hash após _git commit_ e você digitar o texto do commit no arquivo do editor
+  - ('modified'): não rastreado, mudanças que ainda não foram adicionadas com `git add .`
+  - Staged: mudanças que aparecem como "Changes to be committed" após o `git add .`
+  - commited: mudanças que aparecem como commit com hash após `git commit` e você digitar o texto do commit no arquivo do editor
 
 - Basicamente:
 
-  - **Untracked** --> qualquer alteração --> **modified** --> _git add_ --> **staged** --> _git commit_ --> **commited**
+  - **Untracked** --> qualquer alteração --> **modified** --> `git add` --> **staged** --> `git commit` --> **commited**
 
 - Todos os arquivos acima são monitorados por git. Os que estão no .gitignore nem untracked chegam a ser;
 
@@ -117,19 +117,19 @@
 
 # Git amend e git push
 
-- _git log_ --oneline
+- `git log` --oneline
 
   - logs em uma linha, resumidos
 
-- _git diff_ calcula a diferença entre os arquivos salvos nos commits x o que você tem atualmente na sua área de trabalho
+- `git diff` calcula a diferença entre os arquivos salvos nos commits x o que você tem atualmente na sua área de trabalho
 
-- Caracter _\n_ basicamente indica o caracter newline, que basicamente
+- Caracter `\n` basicamente indica o caracter newline, que basicamente
   é um caractere que indica FIM DA LINHA. Se não tem ele, para os computadores, meio que nem linha aquele trecho é.
 
 - Por isso você consegue selecionar um pequeno espaço após cada linha
   de código. É o \n, invibilizado pelo editor para não atrapalhar sua leitura;
 
-- _git commit --amend_: com isso você consegue pegar o arquivo staged e emendar a alteração dele com a do commit anterior;
+- `git commit --amend`: com isso você consegue pegar o arquivo staged e emendar a alteração dele com a do commit anterior;
 
 # Sobre push e outros comandos para git online
 
@@ -212,7 +212,7 @@
 
 # Como organizar tarefas
 
-- Conceito relevante: _saldo positivo x saldo negativo_
+- Conceito relevante: `saldo positivo x saldo negativo`
 
   - Fazer mais com que menos;
   - Qualquer tarefa que abale esse senso natural de saldo na sua mente se torna cansativa;
@@ -220,7 +220,7 @@
 
 - Nível 1: anotação para apenas lembrar do que precisa ser feito. Custo de energia (para produzir essa anotação) e de aquecimento (rapidez de verificação) devem ser baixíssimos. Ex: folhas de papel A4 com as tarefas;
 
-- Nível 2: _lembrar de todas as coisas a serem feitas com tempo de aquecimento baixo, mas em grupo_. Ótimo ter checkboxes para marcar de forma parcial e total. Ex: quadro na geladeira;
+- Nível 2: `lembrar de todas as coisas a serem feitas com tempo de aquecimento baixo, mas em grupo`. Ótimo ter checkboxes para marcar de forma parcial e total. Ex: quadro na geladeira;
 
 - Nível 3: expandir conhecimento. Utilizar ferramentas que tem tempo de produção maior (trello, github, etc) contendo mais informações e um tempo de aquecimento maior também (demora mais para visualizar pois precisa carregar as páginas, etc);
 
@@ -292,6 +292,9 @@
   - Ele que tem todos os endereços .br possiveis disponiveis
   - Ele é consultado pelo registro.br na hora que você coloca o dominio que vc quer la
   - E retorna se tá disponivel ou não;
-  - Se estiver disponivel, aí o seu registrador (hostgator, locaweb)
+  - Se estiver disponivel, aí o seu registrador (hostgator, locaweb, registro.br)
     passa as info para o Registry e o Registry insere esse registro na lista de TLDs consultaveis apontando para o seu Authoritative Server
 - A compra de um dominio passa pela escolha do dominio, cadastro simples, confirmação de usuário e pagamento.
+- Uma vez que o domínio foi pago, você precisa de um servidor authoritativo, que vai transmitir isso para o Registor, que
+  vai passar isso para o Registry (NIC.br) que vai atualizar o TLD com seu endereço e assim, os novos fluxos vindo do 
+  root server irão encontrar seu site
