@@ -312,3 +312,4 @@
   - ns2.vercel-dns.com
 - Esses serão os dois servers dns da vercel que vão responder pelo domínio;
 - Vá no registro.br, entre no seu dominio clicando no nome dele > vá para dns > cole os dois endereços de server dns que apontei acima
+- Lembrete: o server authoritativo não armazena o site, ele APONTA para o ip do server que armazena o site
