@@ -298,3 +298,17 @@
 - Uma vez que o domínio foi pago, você precisa de um servidor authoritativo, que vai transmitir isso para o Registor, que
   vai passar isso para o Registry (NIC.br) que vai atualizar o TLD com seu endereço e assim, os novos fluxos vindo do 
   root server irão encontrar seu site
+- O que faremos agora é
+  - Ir no servidor dns da vercel
+  - Colocar nosso domínio lá
+  - E fazer com que o registro.br aponte para o nosso domínio no server autoritativo da vercel
+  - Isso fará com que o Registry pegue essa informação e propague para o TLD, de forma que novas solicitações vindas 
+    do root server serão lançadas direto para nosso server autoritativo (o server dns da vercel que contem nosso dominio
+    cooppplatform.com.br)
+- Para fazer com que o server da vercel seja o nosso authoritativo, você vai em domain > add > insere o repo do projeto > 
+  insere o domínio comprado no registro.br > finaliza
+- Inicialmente a vercel irá pensar que temos um server authoritativo externo e estamos tentando fazer com que ela aponte para esse server externo. Mas nós queremos que a vercel seja o authoritativo. Logo, basta ir na aba nameservers > add > aparece os dois endereços de server DNS:
+  - ns1.vercel-dns.com
+  - ns2.vercel-dns.com
+- Esses serão os dois servers dns da vercel que vão responder pelo domínio;
+- Vá no registro.br, entre no seu dominio clicando no nome dele > vá para dns > cole os dois endereços de server dns que apontei acima
