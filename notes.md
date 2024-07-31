@@ -341,3 +341,10 @@
   - aws status;
   - vercel status;
 - Mas não confie nem no status da página de status;
+
+# PoC x MVP
+
+- Proof of Concept;
+- Minimal Valuable Product;
+- Primeiro você faz várias provas de conceito baratas (versões de página, por exemplo);
+- Depois você vai fazer o MVP para fazer o produto completo mínimo bem feito de forma que o mínimo já seja a solução sem ruídos entre o cliente e sua aplicação;
