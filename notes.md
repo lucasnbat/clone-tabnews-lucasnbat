@@ -313,3 +313,11 @@
 - Esses serão os dois servers dns da vercel que vão responder pelo domínio;
 - Vá no registro.br, entre no seu dominio clicando no nome dele > vá para dns > cole os dois endereços de server dns que apontei acima
 - Lembrete: o server authoritativo não armazena o site, ele APONTA para o ip do server que armazena o site
+- O Nome real do Authoritative Server é Authoritative Nameserver
+- para instalar pacote com comando dig: `sudo apt install dnsutils`
+- comando: `dig nomedoseudominio.com.br A`
+  - Com isso você tá buscando o IP do server que guarda seu site
+  - No caso, vai aparecer dois ips na mesma faixa, demonstrando os dois servidores da vercel mais proximos de você para entregarem os dados do site
+- Os records são registros no server authoritativo;
+  - `dig coopplatform.com.br TXT +trace`
+    - Nesse exemplo buscamos o conteudo do record TXT e pedimos para mostrar todo o caminho tomado até chegar no server authoritativo
