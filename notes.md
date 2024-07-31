@@ -321,3 +321,11 @@
 - Os records são registros no server authoritativo;
   - `dig coopplatform.com.br TXT +trace`
     - Nesse exemplo buscamos o conteudo do record TXT e pedimos para mostrar todo o caminho tomado até chegar no server authoritativo
+
+# MacDonald's Theory
+
+- Sugira algo bizarro apenas para quebrar o gelo e subir sugestões do pessoal;
+- E aos poucos será definido:
+  - O que fazer;
+  - O que proteger;
+  - O que repetir para as novas pessoas que chegarem dentro do seu projeto;
