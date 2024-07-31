@@ -326,6 +326,18 @@
 
 - Sugira algo bizarro apenas para quebrar o gelo e subir sugestões do pessoal;
 - E aos poucos será definido:
-  - O que fazer;
-  - O que proteger;
-  - O que repetir para as novas pessoas que chegarem dentro do seu projeto;
+  - O que fazer => área para notícias e conteúdos agro para o público;
+  - O que proteger => relevância de conteúdos para o público;
+  - O que repetir para as novas pessoas que chegarem dentro do seu projeto => produza conteúdo relevante que você terá espaço para fazer propaganda do seu produto!!
+
+# Não confie em 100% uptime
+
+- Comprometimento de 99,9% de uptime;
+- Equivale a 44min. por mês;
+- Isso é combinado no SLA nos termos de serviço quando vc acessa a plataforma;
+- Quanto mais complexo o serviço, mais difícil determinar o que é "ficar fora" ou "downtime";
+- Status pages;
+  - Pesquise `termo + status` no google;
+  - aws status;
+  - vercel status;
+- Mas não confie nem no status da página de status;
