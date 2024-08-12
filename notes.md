@@ -405,4 +405,6 @@
 - Testes podem inclusive servir como uma documentação perfeita integrada
   com o código; ótimo para rever regras de negócio;
 
-### TDD - Test Development Driven
+### TDD - Test Driven Development
+
+- Especificamos o comportamento esperado pelo teste => codamos depois para ajustar com o resulta
