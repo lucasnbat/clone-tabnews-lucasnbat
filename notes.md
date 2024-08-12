@@ -322,7 +322,7 @@
   - `dig coopplatform.com.br TXT +trace`
     - Nesse exemplo buscamos o conteudo do record TXT e pedimos para mostrar todo o caminho tomado até chegar no server authoritativo
 
-# MacDonald's Theory
+# McDonald's Theory
 
 - Sugira algo bizarro apenas para quebrar o gelo e subir sugestões do pessoal;
 - E aos poucos será definido:
@@ -348,3 +348,52 @@
 - Minimal Valuable Product;
 - Primeiro você faz várias provas de conceito baratas (versões de página, por exemplo);
 - Depois você vai fazer o MVP para fazer o produto completo mínimo bem feito de forma que o mínimo já seja a solução sem ruídos entre o cliente e sua aplicação;
+
+# Inauguração Milestone 1: Fundação
+
+- Começamos a projetar pelo front-end;
+
+# Overengineering
+
+- Simples != mal-feito;
+- Simples bem-feito > complexidade;
+- Escolha de linguagem:
+  - Maturidade da empresa;
+  - Comunidade;
+  - Facilidade de encontrar profissionais;
+  - Contexto;
+- A coisa mais importante para software é quanto
+  **modificável** ele é;
+- Como pensar no projeto:
+  - Linguagem a definir;
+    - Linguagem que você domine;
+    - Seja fácil de aprender e tenha baixa barreira de entrada;
+  - Arquitetura de software:
+    - Definida pelo escopo que cada componente & Interação entre eles;
+    - Organização de pastas != arquitetura de software;
+    - Ex: MVC (1979)
+  - Organização de pastas:
+    - root
+      - pages
+        - index.js
+      - models
+        - user.js
+        - content.js
+        - password.js
+      - infra
+        - database.js
+        - migrations
+        - provisionaing
+          - staging
+          - production
+      - tests
+
+# Testes
+
+- Se um sistema perde funcionalidades em outra versão
+  ele sofre uma **REGRESSÃO**;
+- O certo é ter um teste para isso, para indicar esse erro
+  que regressou o sistema; para você ver como vai resolver;
+- Jest:
+  - `npm install --save-dev jest@29.6.2`
+  - No package: "test": "jest"
