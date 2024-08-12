@@ -397,3 +397,12 @@
 - Jest:
   - `npm install --save-dev jest@29.6.2`
   - No package: "test": "jest"
+
+## Teste de verdade
+
+- Models é uma pasta com "ferramentas" úteis para uso no sistema;
+- Jest só usa commonjs por exemplo;
+- Testes podem inclusive servir como uma documentação perfeita integrada
+  com o código; ótimo para rever regras de negócio;
+
+### TDD - Test Development Driven
