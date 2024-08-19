@@ -415,3 +415,12 @@
 - Integration Test/ services (Corpo da pirâmide);
 - Unit Test (Base da pirâmide);
 - O conceito de "unidade" pode ser definido pelo próprio eng. soft.;
+
+# Endpoint
+
+- Ponto final: indica onde vamos chegar;
+  - Mais comumente usado quando estamos dizendo sobre endereço de API;
+- Tudo, grosseiramente, é uma interface;
+  - A diferença está em:
+    - O quanto é programável;
+    - Qual público está direcionada;
