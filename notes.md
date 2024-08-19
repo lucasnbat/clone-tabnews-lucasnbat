@@ -408,3 +408,10 @@
 ### TDD - Test Driven Development
 
 - Especificamos o comportamento esperado pelo teste => codamos depois para ajustar com o resulta
+
+## Tipos de teste
+
+- E2E/ testes de UI (Ponta da pirâmide);
+- Integration Test/ services (Corpo da pirâmide);
+- Unit Test (Base da pirâmide);
+- O conceito de "unidade" pode ser definido pelo próprio eng. soft.;

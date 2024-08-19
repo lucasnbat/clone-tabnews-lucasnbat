@@ -1,4 +1,4 @@
-const calc = require("../models/calc")
+const calc = require("../../models/calc")
 
 test("somar 2 + 2 deveria retornar 4", () => {
   const result = calc.somar(2, 2) 
