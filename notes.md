@@ -424,3 +424,36 @@
   - A diferença está em:
     - O quanto é programável;
     - Qual público está direcionada;
+- Para ver todo o protocolo no curl: `curl http://localhost:3000/api/status -v`
+  - ">": são requisições
+  - *: são mensagens internas
+  - "<": são a respostas do server
+- Fica a cargo do client pegar a resposta e renderizar algo (chrome, edge...)
+
+# Não é magia, é protocolo!
+
+- Note: o "A" record do server authoritativo guarda o ip do server final que contém o seu site;
+- Se eu acessar esse ip, vai abrir o site?
+- Veja que ao solicitarmos acesso com `curl https://76.76.21.21 --insecure --verbose` ocorreu:
+  - uma resposta com status 308 (redirect)
+  - que ordena redirecionar para https://vercel.com/
+  - o client (chrome) obedece e redireciona para o site
+- O server autoritativo tem vários hosts virtuais com diferentes sites;
+- Como então ele renderiza apenas o meu?
+  - Ao fazer a req. http via chrome, usando o seu dominio, é setado
+    no cabeçalho "header" que o host = coopplatform.com.br, o que faz
+    ele saber que precisa renderizar o seu site;
+  - Comando equivalente: `curl https://76.76.21.21 --insecure --verbose --header 'Host: coopplatform.com.br'`
+- Acesse diretamente: `curl https://coopplatform.com.br --insecure --verbose`
+
+# Versionamento de API
+
+- Dois timos de mudanças:
+  - Breaking Changes: mudanças tuas que quebram a API e exigem      rescrever; quebra de contratos que ela expunha (renomear 
+  user_name para username; mudança de tipo de dados de retono);
+    - Mudanças que quebram compatibilidade com versões anteriores;
+  - Non Breaking Changes: ...
+- Estratégias:
+  - URI Path Versioning (/v1/api);
+  - Header Versionning: client manda cabeçalho customizado na 
+    request para cliente definir o que quer usar;
