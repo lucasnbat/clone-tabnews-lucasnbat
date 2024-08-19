@@ -457,3 +457,27 @@
   - URI Path Versioning (/v1/api);
   - Header Versionning: client manda cabeçalho customizado na 
     request para cliente definir o que quer usar;
+
+# Como escolher BD
+
+- SGBD;
+  - MySQL;
+  - PostgreSQL*;
+  - MongoDB;
+  - Microsoft SQL Server;
+- Modo de administrar e gerar querys;
+  - ORM - Object Oriented Maping;
+  - Não usar ORM*;
+  - pg (node-pg) para conectar e mandar querys;
+- Como você vai fazer migrations;
+  - node-pg-migrate;
+- Tipos:
+  - Relacional;
+  - Não Relacional;
+    - Armazenamento por Documentos;
+    - Armazenamento chave/ valor;
+  - Bancos Espacial;
+- SQL:
+  - Criado nos labs da IBM;
+  - Virou um padrão adotado por muitos bancos relacionais;
+  - Para usos mais básicos é praticamente a hegemonia;
