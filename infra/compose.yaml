@@ -1,0 +1,13 @@
+# YAML Ain't Markup Language = ele guarda dados
+# É montado em cima do JSON, mas inspirado em Python (indentação)
+
+services:
+  database:
+    image: 'postgres:16.4-alpine3.20'
+    environment: 
+      POSTGRES_PASSWORD: 'clone'
+      POSTGRES_USER: 'clone'
+    ports:
+      - 2345:5432
+
+

@@ -4,7 +4,6 @@
   "description": "Implementação do TabNews como forma de acompanhar o curso do Filipe Deschamps.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next dev",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",

@@ -265,9 +265,11 @@
 - Converte nome em endereço IP ("resolver");
 
 - É como uma tabelona que anota o nome e o endereço relativo;
+
   - Um ip pode mudar, mas aí o nome continua, não impacta no domínio;
 
 - Você faz a requsiição primeiramente para um recursive server;
+
   - Esse recursive server vai pedir para um root server (um dos servidores dns poderosos lá) se ele sabe qual é o ip referente àquele domínio;
 
 - tabnews.com.br.
@@ -284,7 +286,7 @@
 
 # Registrando um domínio próprio
 
-- Para registrar um dominio você tem que ir atrás de um registor 
+- Para registrar um dominio você tem que ir atrás de um registor
   (registrador, como registro.br, uolhost, hostgator, locaweb...);
 - É como se eles fossem vivo, claro, tim... e você pode migrar entre
   registradores também;
@@ -296,16 +298,16 @@
     passa as info para o Registry e o Registry insere esse registro na lista de TLDs consultaveis apontando para o seu Authoritative Server
 - A compra de um dominio passa pela escolha do dominio, cadastro simples, confirmação de usuário e pagamento.
 - Uma vez que o domínio foi pago, você precisa de um servidor authoritativo, que vai transmitir isso para o Registor, que
-  vai passar isso para o Registry (NIC.br) que vai atualizar o TLD com seu endereço e assim, os novos fluxos vindo do 
+  vai passar isso para o Registry (NIC.br) que vai atualizar o TLD com seu endereço e assim, os novos fluxos vindo do
   root server irão encontrar seu site
 - O que faremos agora é
   - Ir no servidor dns da vercel
   - Colocar nosso domínio lá
   - E fazer com que o registro.br aponte para o nosso domínio no server autoritativo da vercel
-  - Isso fará com que o Registry pegue essa informação e propague para o TLD, de forma que novas solicitações vindas 
+  - Isso fará com que o Registry pegue essa informação e propague para o TLD, de forma que novas solicitações vindas
     do root server serão lançadas direto para nosso server autoritativo (o server dns da vercel que contem nosso dominio
     cooppplatform.com.br)
-- Para fazer com que o server da vercel seja o nosso authoritativo, você vai em domain > add > insere o repo do projeto > 
+- Para fazer com que o server da vercel seja o nosso authoritativo, você vai em domain > add > insere o repo do projeto >
   insere o domínio comprado no registro.br > finaliza
 - Inicialmente a vercel irá pensar que temos um server authoritativo externo e estamos tentando fazer com que ela aponte para esse server externo. Mas nós queremos que a vercel seja o authoritativo. Logo, basta ir na aba nameservers > add > aparece os dois endereços de server DNS:
   - ns1.vercel-dns.com
@@ -426,7 +428,7 @@
     - Qual público está direcionada;
 - Para ver todo o protocolo no curl: `curl http://localhost:3000/api/status -v`
   - ">": são requisições
-  - *: são mensagens internas
+  - \*: são mensagens internas
   - "<": são a respostas do server
 - Fica a cargo do client pegar a resposta e renderizar algo (chrome, edge...)
 
@@ -449,25 +451,25 @@
 # Versionamento de API
 
 - Dois timos de mudanças:
-  - Breaking Changes: mudanças tuas que quebram a API e exigem      rescrever; quebra de contratos que ela expunha (renomear 
-  user_name para username; mudança de tipo de dados de retono);
+  - Breaking Changes: mudanças tuas que quebram a API e exigem rescrever; quebra de contratos que ela expunha (renomear
+    user_name para username; mudança de tipo de dados de retono);
     - Mudanças que quebram compatibilidade com versões anteriores;
   - Non Breaking Changes: ...
 - Estratégias:
   - URI Path Versioning (/v1/api);
-  - Header Versionning: client manda cabeçalho customizado na 
+  - Header Versionning: client manda cabeçalho customizado na
     request para cliente definir o que quer usar;
 
 # Como escolher BD
 
 - SGBD;
   - MySQL;
-  - PostgreSQL*;
+  - PostgreSQL\*;
   - MongoDB;
   - Microsoft SQL Server;
 - Modo de administrar e gerar querys;
   - ORM - Object Oriented Maping;
-  - Não usar ORM*;
+  - Não usar ORM\*;
   - pg (node-pg) para conectar e mandar querys;
 - Como você vai fazer migrations;
   - node-pg-migrate;
@@ -481,3 +483,49 @@
   - Criado nos labs da IBM;
   - Virou um padrão adotado por muitos bancos relacionais;
   - Para usos mais básicos é praticamente a hegemonia;
+
+# Por que o Docker dominou o mundo?
+
+- Problema de VMs: muita memória e pouco processamento
+  consumido;
+- Docker: criou uma interface para tecnologias já existentes
+  no Linux, o cGroups (controle de recursos computacionais
+  granular) e Namespaces(criação de membrana ao redor de pro-
+  cessos para que conversassem somente entre eles);
+- No docker: você só agrupa recursos já existentes na máquina
+  pra rodar serviços que você quer (um container)
+  ![alt text](image.png)
+- Ao entrar no terminal de um container você não está entrando
+  em nada, apenas está usando um serviço com um PID de namespace
+  diferente;
+
+# Subir Banco de Dados (Local)
+
+- Dockerfile: código fonte que define comandos que vão formar
+  o ambiente virtual com serviços;
+- Dockerfile precisa ser compilado numa IMAGEM (é como um .exe
+  que não dá para alterar)
+- Para você executar uma iamgem, um CONTAINER é usado. Um container
+  é uma imagem rodando;
+- A versão mais leve (e recomendada) da imagem do postgres é a
+  Alpine;
+- COnfigure as variaveis de ambiente;
+- `docker compose up`
+
+# Se conectando no banco de dados
+
+- Exit code: codigo que o processo expele ao ser encerrado:
+  - 0 : tudo certo
+  - Qualquer coisa acima de 0: deu algo errado;
+- `docker logs 39809401204d`
+- Instalando client: `sudo apt install postgresql-client`
+- `psql --host=localhost --username=clone --port=2345`
+  - Mas vc precisa abrir a porta do container para se comunicar
+    com o banco;
+  - Para isso, você precisa especificar o ports lá no compose.yaml
+    inserindo o ports: 5432:5432 (hostExterno:portaInternaDoContainer)
+- Para baixar e recriar o container: `ocker compose up -d --force-recreate`
+  - mesma coisa de fazer `docker compose down` (destruir) --> `docker compose up`
+- Caso você mude o .yaml para outra pasta, especifique o caminho
+  ao usar os comandos up e dowm: `docker compose -f infra/compose.yaml down`
+-
