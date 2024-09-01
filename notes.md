@@ -574,8 +574,11 @@
   
   ```
   {
-  	"compilerOptions": {
-    	"baseUrl": "." //base absoluta = raiz do projeto para frente
-  	}
+      "compilerOptions": {
+        "baseUrl": "." //base absoluta = raiz do projeto para frente
+      }
   }
   ```
+  
+  - Extra: se vc ta mexendo em arquivo já enviado ao git, pode usar um comando como `git commit -am 'mensagem do commit'`
+  
