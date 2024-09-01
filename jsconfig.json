@@ -1,0 +1,5 @@
+{
+  "compilerOptions": {
+    "baseUrl": "." //base absoluta = raiz do projeto para frente
+  }
+}
