@@ -565,3 +565,5 @@
   - para evitar que isso fique gravado no historico, só deixe um espaço:
     - ` POSTGRES_PASSWORD=clone npm run dev`
     - sim, é literalmente dar um espaço antes do comando para evitar gravação no histórico;
+- Existe hierarquia de precedência na leitura dos .env
+	- isso significa que, se vc vai fazer deploy de uma aplicação, as var ambiente definidas no momento da build no painel terao precedência sobre as var locais de desenvolvimento que vc definiu no seu .env (pelo menos Vercel funciona assim)
