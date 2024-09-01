@@ -4,9 +4,8 @@
 services:
   database:
     image: 'postgres:16.4-alpine3.20'
-    environment: 
-      POSTGRES_PASSWORD: 'clone'
-      POSTGRES_USER: 'clone'
+    env_file:
+      - ../.env
     ports:
       - 2345:5432
 

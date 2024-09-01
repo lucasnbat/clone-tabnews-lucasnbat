@@ -16,6 +16,7 @@
   os terminais novos devem ler para inicializar; -`nvm alias default lts/hydrogen`;
 
 - Arquivos com final "rc" significa "run commands" ou comandos de inicalização
+  
   - o .nvmrc serve para reocmendarmos a versão de nodejs que nossos visitantes
     de rep vão ser recomendados a usar;
 
@@ -30,6 +31,7 @@
 - npm install react@18.2.0 -> react como dependencia;
 
 - npm install react-dom@18.2.0 -> renderizador de HTML do react
+  
   - existem vários, tais como o react native (mobile), renderizadores 3d...
 
 ## Arquivo manisfesto
@@ -40,24 +42,27 @@
 # Protocolos
 
 - HTTP: Hypertext transfer protocol (documentos que tem referencias para outros doc);
+
 - FTP: transf de arquivos;
+
 - SMTP: Simple Mail Transfer Protocol (transf. mensagem de email);
 
 - Protocolo: regras que duas partes concordam para se comunicarem entre si;
 
 - São empilháveis;
-
+  
   - HTTP usa regras para comunicar entre cliente e servidor;
     - Essas informações podem ser transitadas via TCP;
       - QUe por sua vez usa o Internet Protocol (IP)
 
 - Protocolos com mais verificação de perda de info como TCP geram custo;
-
+  
   - Nem sempre compensa pagar esse custo (caso de vídeos zoom, com protocolo UDP)
   - Quem compensa a perda de frames geralmente são os humanos que estão na reunião zoom;
 
 - No UDP, se há perda de movimento de um objeto na tela de posição A para posição B,
   ele preenche esse limbo com dataframes intermediários;
+  
   - Isso não ocorre no TCP, o qual ao perceber a perda de um dado na transmissão
     negocia o re-envio dessa informação, ocasionando "travamentos" na fluidez do objeto;
 
@@ -73,7 +78,7 @@
 
 - Merge conflict: quando alterações de duas pessoas causam conflito na execução
   da versão de código de cada uma;
-
+  
   - Algo como uma pessoa está codando contado que existe um bloco x de código e
     a outra pessoa deletou o bloco x
   - Aí abre-se um Merge conflict que só será resolvido por um humano;
@@ -101,14 +106,14 @@
   e deixa o restante de fora (há casos assim onde você modifica vários para descobrir que resolveria o problema alterando apenas uma linha);
 
 - git status
-
+  
   - untracked: arquivos não rastreados que mal foram mexidos. Você alterou, ele vira modified;
   - ('modified'): não rastreado, mudanças que ainda não foram adicionadas com `git add .`
   - Staged: mudanças que aparecem como "Changes to be committed" após o `git add .`
   - commited: mudanças que aparecem como commit com hash após `git commit` e você digitar o texto do commit no arquivo do editor
 
 - Basicamente:
-
+  
   - **Untracked** --> qualquer alteração --> **modified** --> `git add` --> **staged** --> `git commit` --> **commited**
 
 - Todos os arquivos acima são monitorados por git. Os que estão no .gitignore nem untracked chegam a ser;
@@ -118,7 +123,7 @@
 # Git amend e git push
 
 - `git log` --oneline
-
+  
   - logs em uma linha, resumidos
 
 - `git diff` calcula a diferença entre os arquivos salvos nos commits x o que você tem atualmente na sua área de trabalho
@@ -136,7 +141,7 @@
 - "On branch main
   Your branch is ahead of 'origin/main' by 1 commit.
   (use "git push" to publish your local commits)"
-
+  
   - Isso significa que a sua branch main local está a frente da main origin (online) em 1 commit
 
 - origin/main = na origin online, a branch main
@@ -150,10 +155,11 @@
 - packtage.json: metadados, scripts e dependencias;
 
 - packtage-lock.json: toma nota das dependencias principais e dependencias das dependencias;
-
+  
   - é exclusivamente sobre dependencias;
 
 - Sobre o problema do git --amend:
+  
   - se você faz um --amend, ele volta no tempo,
     pega a alteração do seu commit mais atual e
     mescla com o commit anterior, gerando uma NOVA
@@ -178,6 +184,7 @@
 - Deploy: depositar arquivos nos servidores que vão fornecer serviço;
 
 - Hoje:
+  
   - Máquina local --> C.I. (Continuous Integrator) --> Build --> Produção;
   - C.I. = contém testes automatizados;
   - Build = ocorre numa máquina que vai criar a versão final de código que rodará na internet;
@@ -186,11 +193,11 @@
 # Mais deploys
 
 - Minimal Privilege Principle: principio do menor priilégio;
-
+  
   - Libera o básico de acessos e depoise xpanda conforme necessidade;
 
 - Deploys na vercel sempre ficam com url identificando eles;
-
+  
   - branchs tem url unica;
   - commits tem url unica;
 
@@ -213,7 +220,7 @@
 # Como organizar tarefas
 
 - Conceito relevante: `saldo positivo x saldo negativo`
-
+  
   - Fazer mais com que menos;
   - Qualquer tarefa que abale esse senso natural de saldo na sua mente se torna cansativa;
   - Ex: cenário ruim do nível 4 (sobrecarregar programador com rotinas de gestão)
@@ -225,6 +232,7 @@
 - Nível 3: expandir conhecimento. Utilizar ferramentas que tem tempo de produção maior (trello, github, etc) contendo mais informações e um tempo de aquecimento maior também (demora mais para visualizar pois precisa carregar as páginas, etc);
 
 - Nível 4: gerar métricas sobre as pessoas que estão trabalhando. Isso é muitas vezes mais útil ao gestor do que ao programador que programa (participar de reuniões, arrastar um card de jira...);
+  
   - Mensurar métricas é MEIO, e não um FIM em si mesmo; Não pese as pessoas do seu time!
 
 # Como lidar com projetos de qualquer tamanho
@@ -240,6 +248,7 @@
 - Por padrão, quebre as pedras o máximo possível até ficar na pedrinha em que você considere viável para implementar;
 
 - Mecânica de dopamina:
+  
   - 1º estágio - Início: cérebro identifica oportunidade e libera pequenas doses de dopamina em regiões do cérebro para você gerar movimento e ir em direção ao objetivo;
   - 2º estágio - Progresso: cérebro libera novas doses maiores à medida que o caminho tomado pelo seu movimento começa a gerar resultado. estímulo para concluir o movimento;
   - 3º estágio - Final: caso o movimento produza um resultado que é "aprovado", uma dose final e maior de dopamina é liberada e o evento mexe com as estruturas do cérebro, modelando-o;
@@ -247,9 +256,11 @@
 # Configurando formatadores
 
 - editorconfig: editor enquanto você digita;
+
 - prettier: ajusta inclusive códigos já existentes;
 
 - comandos:
+  
   - npm i prettier -D = instala como dependencia de desenvolvimento;
   - adicione {"lint:check": "prettier --check ."} no package.json;
   - Instale a extensão do prettier e insira ele como formatador padrão do vscode;
@@ -265,14 +276,15 @@
 - Converte nome em endereço IP ("resolver");
 
 - É como uma tabelona que anota o nome e o endereço relativo;
-
+  
   - Um ip pode mudar, mas aí o nome continua, não impacta no domínio;
 
 - Você faz a requsiição primeiramente para um recursive server;
-
+  
   - Esse recursive server vai pedir para um root server (um dos servidores dns poderosos lá) se ele sabe qual é o ip referente àquele domínio;
 
 - tabnews.com.br.
+  
   - "termina" com ponto. O root server vai ler de trás para frente;
   - "." indica o root server;
   - ".br" é o TLD, Top Level Domain. E o root server sabe qual é a lista dos servidores que são dos TLD. Os roots servers sabem quais os ips dos servidores dos TLD;
@@ -528,4 +540,28 @@
   - mesma coisa de fazer `docker compose down` (destruir) --> `docker compose up`
 - Caso você mude o .yaml para outra pasta, especifique o caminho
   ao usar os comandos up e dowm: `docker compose -f infra/compose.yaml down`
--
+
+# Trabalhando com módulo `database.js`
+
+- `npm install pg@8.11.3`
+- alteração do script para jest --watchAll (vigia TUDO, até alterações de commits antigos)
+
+# Sobre variáveis de ambiente e "stateless"
+
+- Interface = layout + UI
+- Aplicação = regra de negócio -> gera um resultado, um state
+- Persistência = persiste/ grava o state 
+  - Masterizando: tirar a info do dispositivo e jogar na nuvem (remoto)
+- Precisamos desacoplar a camada de persistência, pois, em caso de aumento de acessos, precisamos duplicar, triplicar a camada de app sem duplicar os dados armazenados:
+  ![alt text](image-1.png)
+- As variáveis de ambiente auxiliam a permitir esse efeito de "desacoplamento"
+
+## Variáveis em ação no código
+
+- Processo pai (terminal) tem o processo filho (server.js)
+  - E cada processo tem suas variáveis de ambiente e puxa elas;
+- Para ver as variáveis ambiente, entre no bash do linux e digite `env` no terminal
+- `POSTGRES_PASSWORD=suaSenha npm run dev` isso faz com que o proximo processo use a var ambiente;
+  - para evitar que isso fique gravado no historico, só deixe um espaço:
+    - ` POSTGRES_PASSWORD=clone npm run dev`
+    - sim, é literalmente dar um espaço antes do comando para evitar gravação no histórico;
