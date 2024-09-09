@@ -581,4 +581,16 @@
   ```
   
   - Extra: se vc ta mexendo em arquivo já enviado ao git, pode usar um comando como `git commit -am 'mensagem do commit'`
-  
+
+# Endpoint "/status": ISO 8601 + Fuso + MVC + lowerCamelCase
+
+- Fuso horário: 2024-09-08T23:29:51Z
+  - Temos ano, mês, dia, seguidos de hora, minuto e segundo;
+  - Z é o código de um fuso horário militar, e Z é o código de ZuluTimeZone, um offset de UTC00 se você for verificar no wikipedia;
+- Controller pega a requisiçaõ do usuário --> busca a regra de nogócio com a model --> model envia de novo para o controller --> ele manda resposta para view para mostrar ao usuário;
+- Testes estritos: testes que não permitem que haja algo a mais retornado no corpo da requisição;
+- Query:
+  - Sem parâmetros -> não é passível de SQL Injection;
+  - Querys com parâmetros fixos -> não é passível de SQL Injection -> porque tá tudo hard coded nela;
+  - Querys com parâmetros dinâmicos;
+- No POSTGRESQL toda conexão precisa ter uma associação com banco de dados;
