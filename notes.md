@@ -1,8 +1,8 @@
-# Anotações
+# Geral sobre o ambiente do curso
 
 - Ambiente codespsaces já vem com: docker, docker compose, nvm e nodejs;
 
-# Noções sobre nodejs e nvm
+## Noções sobre nodejs e nvm
 
 - Para listar versões do node: nvm ls
 
@@ -20,7 +20,7 @@
   - o .nvmrc serve para reocmendarmos a versão de nodejs que nossos visitantes
     de rep vão ser recomendados a usar;
 
-# Nextjs
+## Nextjs
 
 - Não é framework extremamente opinativo, ele apenas orquestra;
 
@@ -98,7 +98,7 @@
 - Quando você precisa de ver as diferenças, o git joga um blob de arquivo numa versão
   x contra o blob de outro na versão y e calcula o que foi mudado sob demanda
 
-# Estágios dos gits
+## Estágios dos gits
 
 - Modified: uma arquivo que já tem commit e que foi modificado;
 
@@ -120,7 +120,7 @@
 
 - Build: arquivos nossos --> arquivos finais que serão consumidos pelo navegador (eles ficam na .next/)
 
-# Git amend e git push
+## Git amend e git push
 
 - `git log` --oneline
   
@@ -136,7 +136,7 @@
 
 - `git commit --amend`: com isso você consegue pegar o arquivo staged e emendar a alteração dele com a do commit anterior;
 
-# Sobre push e outros comandos para git online
+## Sobre push e outros comandos para git online
 
 - "On branch main
   Your branch is ahead of 'origin/main' by 1 commit.
@@ -190,7 +190,7 @@
   - Build = ocorre numa máquina que vai criar a versão final de código que rodará na internet;
   - Produção: ...produção!
 
-# Mais deploys
+## Mais deploys
 
 - Minimal Privilege Principle: principio do menor priilégio;
   
@@ -367,7 +367,7 @@
 
 - Começamos a projetar pelo front-end;
 
-# Overengineering
+## Overengineering
 
 - Simples != mal-feito;
 - Simples bem-feito > complexidade;
@@ -402,7 +402,7 @@
           - production
       - tests
 
-# Testes
+## Testes
 
 - Se um sistema perde funcionalidades em outra versão
   ele sofre uma **REGRESSÃO**;
@@ -594,3 +594,5 @@
   - Querys com parâmetros fixos -> não é passível de SQL Injection -> porque tá tudo hard coded nela;
   - Querys com parâmetros dinâmicos;
 - No POSTGRESQL toda conexão precisa ter uma associação com banco de dados;
+
+# Análise e tratamento de erros
