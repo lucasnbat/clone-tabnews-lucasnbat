@@ -596,3 +596,29 @@
 - No POSTGRESQL toda conexão precisa ter uma associação com banco de dados;
 
 # Análise e tratamento de erros
+
+* Ao verificar logs, busque primeiramente alguma informação que é familiar para você, que você conheça.
+  
+  * Não tente jamais absorver o log inteiro de uma vez;
+
+* Comando git interessante:
+
+* ```b
+  git restore .
+  ```
+
+* Esse comando permite restaurar o estado de todos os arquivos desde que não commitados ainda, pelo que entendi;
+
+* Para colocar variaveis ambiente na vercel: clique no seu project > settings > environment variables
+  
+  ![](C:\Users\lucas\AppData\Roaming\marktext\images\2024-09-15-14-46-56-image.png)
+
+* Há três ambientes principais: Development, Preview e Production. Deixe apenas Production habilitado para essas variáveis;
+
+* Salve;
+
+* Depois disso, vá em project > deployment da vercel, selecione a ultima versão do projeto > vá nos 3 pontinhos > redeploy para forçar a releitura das vars de ambiente;
+  
+  * Não precisa colocar para aproveitar cache de build anterior, vá para deploy do zero mesmo;
+
+* 
