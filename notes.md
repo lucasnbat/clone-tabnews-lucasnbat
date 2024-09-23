@@ -621,4 +621,9 @@
   
   * Não precisa colocar para aproveitar cache de build anterior, vá para deploy do zero mesmo;
 
-* 
+# Databases: Neon
+
+* Algo estranho: como é possível que, para eu me conectar com o Neon, eu precise de uma instância local rodando?
+* Seja o que for, o setup de variáveis de produção no host da nuvem (no caso,
+  vercel) precisa conter os valores .env que apontam para seu banco de dados
+  da nuvem;
