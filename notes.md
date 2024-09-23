@@ -621,9 +621,37 @@
   
   * Não precisa colocar para aproveitar cache de build anterior, vá para deploy do zero mesmo;
 
-# Databases: Neon
+# Databases in Neon
 
 * Algo estranho: como é possível que, para eu me conectar com o Neon, eu precise de uma instância local rodando?
 * Seja o que for, o setup de variáveis de produção no host da nuvem (no caso,
   vercel) precisa conter os valores .env que apontam para seu banco de dados
   da nuvem;
+
+# Databases in DigitalOcean
+
+* VPS = Virtual Private Server (ou...VMs na nuvem)
+* Como funciona o ssl?
+* Todo SO vem com a detecção de chaves que são vindas de Autoridades Certificadoras
+  ou CA.
+* Um certificado autoassinado pelo provedor de nuvem geralmente pode dar problemas
+  porque, jsutamente, ele é *autoassinado*;
+* Ou seja, até mesmo um hacker poderia gerar um certificado autoassinado e enviar de
+  volta para o servidor, então por padrão as aplicações bloqueiam isso;
+* É preciso enviar um certificado assinado por uma CA, para que o nosso SO, reconhecendo
+  quais são as assinaturas das CAs, possa validar o certificado como correto e permitir
+  a transmissão de informações;
+* A DigitalOcean pode, no papel de CA, emitir um certificado que só ela sabe construir
+  a assinatura, de forma que apenas o servidor dela possa decifrar e reconstruir as infor-
+  mações;
+    * Com isso, nem será preciso subir na hierarquia e buscar as CAs públicas;
+* O certificado deve ser baixado por conexão segura;
+* O conteudo de um certificado geralmente é cifrado em base64 no arquivo aberto no vscode;
+* Caso um dia você vá passar um valor para uma var ambiente que carregue um certificado, 
+  é preciso que você susbtitua todas as quebras de linha (aquele espaço invisivel no final
+  de cada frase) por \n
+  * Sim, selecione todos os espaços no final de cada linha com ctrl + D, digite \n no lugar
+    e pronto, obtenha sua string;
+  * cole na var ambiente com entre aspas
+* Lembre que será necessário também colar o certificado na var ambiente lá no ambiente produ-
+  ção na vercel;
