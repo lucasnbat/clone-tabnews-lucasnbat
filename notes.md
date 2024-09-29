@@ -655,3 +655,41 @@
   * cole na var ambiente com entre aspas
 * Lembre que será necessário também colar o certificado na var ambiente lá no ambiente produ-
   ção na vercel;
+
+# Migrations
+
+* Arquivos de migração: são as alterações em si que serão aplicadas;
+* Framework de migração: organiza ordem de aplicação das migrações e garante que serão executadas uma única vez;
+* Instalar:
+  ```powershell
+  npm install node-pg-migrate@6.2.2
+  ```
+* Configure o script `"migration:create": "node-pg-migrate create"` no `package.json` e execute:
+  ```powershell
+  npm run migration:create first migration test
+  ```
+* As migrations não usam o conceito de blob do git, apenas usam a diff entre uma e outra;
+* Conceito de:
+  * Up: quando está executando em ordem crescente;
+  * Down: caso houve erro, aqui tem todas os comandos para desfazer as alterações de Up;
+* Para que as migrations destinem-se a um diretorio dentro de `infra/`, re-
+  configure o script:
+  ```vim
+      "migration:create": "node-pg-migrate -m infra/migrations create"
+  ```
+* Agora para você executar, configure esse script:
+  ```vim
+    "migration:up": "node-pg-migrate -m infra/migrations up"
+  ```
+* instale o dotenv e depois ajuste o script:
+  ```powershell
+  npm install dotenv@16.4.4
+  ```
+
+  ```vim
+    "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.development up"
+  ```
+* Depois configure o DATABASE_URL para o pg-node-migrate no `.env.development`:
+  ```vim
+  DATABSE_URL=postgres://user:password@host:port/database
+  ```
