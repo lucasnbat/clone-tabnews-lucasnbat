@@ -691,5 +691,14 @@
   ```
 * Depois configure o DATABASE_URL para o pg-node-migrate no `.env.development`:
   ```vim
-  DATABSE_URL=postgres://user:password@host:port/database
+  DATABASE_URL=postgres://user:password@host:port/database
+  ```
+## Dry run x Live run
+
+* Dry run executa as migrations "de mentira", apenas para ver qual resultado ocorre;
+  * Termo originado no corpo de bombeiros dos EUA (Dry run = teste a seco);
+* Live run executa as migrations de verdade, pra valer;
+* Personalizando comando de test para apenas rodar o que tá em `migrations/`:
+  ```vim
+  npm run test:watch -- migrations
   ```
