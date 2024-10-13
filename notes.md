@@ -644,7 +644,7 @@
 * A DigitalOcean pode, no papel de CA, emitir um certificado que só ela sabe construir
   a assinatura, de forma que apenas o servidor dela possa decifrar e reconstruir as infor-
   mações;
-    * Com isso, nem será preciso subir na hierarquia e buscar as CAs públicas;
+  * Com isso, nem será preciso subir na hierarquia e buscar as CAs públicas;
 * O certificado deve ser baixado por conexão segura;
 * O conteudo de um certificado geralmente é cifrado em base64 no arquivo aberto no vscode;
 * Caso um dia você vá passar um valor para uma var ambiente que carregue um certificado, 
@@ -659,46 +659,88 @@
 # Migrations
 
 * Arquivos de migração: são as alterações em si que serão aplicadas;
+
 * Framework de migração: organiza ordem de aplicação das migrações e garante que serão executadas uma única vez;
+
 * Instalar:
+  
   ```powershell
   npm install node-pg-migrate@6.2.2
   ```
+
 * Configure o script `"migration:create": "node-pg-migrate create"` no `package.json` e execute:
+  
   ```powershell
   npm run migration:create first migration test
   ```
+
 * As migrations não usam o conceito de blob do git, apenas usam a diff entre uma e outra;
+
 * Conceito de:
+  
   * Up: quando está executando em ordem crescente;
   * Down: caso houve erro, aqui tem todas os comandos para desfazer as alterações de Up;
+
 * Para que as migrations destinem-se a um diretorio dentro de `infra/`, re-
   configure o script:
+  
   ```vim
       "migration:create": "node-pg-migrate -m infra/migrations create"
   ```
+
 * Agora para você executar, configure esse script:
+  
   ```vim
     "migration:up": "node-pg-migrate -m infra/migrations up"
   ```
+
 * instale o dotenv e depois ajuste o script:
+  
   ```powershell
   npm install dotenv@16.4.4
   ```
-
+  
   ```vim
     "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.development up"
   ```
+
 * Depois configure o DATABASE_URL para o pg-node-migrate no `.env.development`:
+  
   ```vim
   DATABASE_URL=postgres://user:password@host:port/database
   ```
+
 ## Dry run x Live run
 
 * Dry run executa as migrations "de mentira", apenas para ver qual resultado ocorre;
+  
   * Termo originado no corpo de bombeiros dos EUA (Dry run = teste a seco);
+
 * Live run executa as migrations de verdade, pra valer;
+
 * Personalizando comando de test para apenas rodar o que tá em `migrations/`:
+  
   ```vim
   npm run test:watch -- migrations
   ```
+
+## Migrations `down`
+
+* Uso:
+  
+  * Sensível (pode deletar estruturas de BD e DADOS nelas);
+  
+  * Raro (ou pelo menos você vai fazer o possível para que seja);
+    
+    * Motivação para escrever cai;
+    
+    * Motivação para testar cai;
+
+* Se você quiser ver apenas o teste do post: 
+  
+  ```powershell
+  # isso (esse "." antes do "post")meio que é regex que captura o "/"
+  npm run test:watch -- migrations.post 
+  ```
+
+* Jest roda testes em paralelo.
