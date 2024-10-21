@@ -744,3 +744,20 @@
   ```
 
 * Jest roda testes em paralelo.
+  
+  * Para modificar, adicione `--runInBand` nos scripts:
+    
+    ```vim
+        "test": "jest --runInBand",
+        "test:watch": "jest --watchAll --runInBand",
+    ```
+
+
+
+## Fazendo `Jest` transpilar para esmodules
+
+* O jest não tem suporte ainda a esmodules (`import {} from ''`), e isso causa problemas ao importar o `database.js` para dentro de arquivos de testes;
+
+* O `database.js` é escrito para rodar em um server web que já tem suporte a transpilação para esmodules porque roda usando as maquinarias do Next, que tem suporte para esmodules. O Jest não funciona assim;
+
+* Então precisamos "transferir os poderes" que o Next tem para o Jest;
