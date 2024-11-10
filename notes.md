@@ -761,3 +761,14 @@
 * O `database.js` é escrito para rodar em um server web que já tem suporte a transpilação para esmodules porque roda usando as maquinarias do Next, que tem suporte para esmodules. O Jest não funciona assim;
 
 * Então precisamos "transferir os poderes" que o Next tem para o Jest;
+
+## Fazendo deploy e rodando migrations em produção
+
+* Instale: `npm install dotenv-expand@11.0.6`
+* Isso permite leitura de var ambiente dentro da variavel string de conexão
+  com banco de dados;
+* Ex:
+  ```vim
+  POSTGRES_USER=local_clone
+  DATABASE_URL=xxxxxxxx://$POSTGRES_USER:xxxxx_xxxxx@xxxxxxxxxx:xxxx/xxxxx_xxxxx
+  ```
