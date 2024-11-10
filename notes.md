@@ -772,3 +772,9 @@
   POSTGRES_USER=local_clone
   DATABASE_URL=xxxxxxxx://$POSTGRES_USER:xxxxx_xxxxx@xxxxxxxxxx:xxxx/xxxxx_xxxxx
   ```
+# Como se destacar
+
+* **Bottom line** (lucro líquido);
+  * Qual produto influencia mais o lucro líquido da empresa?
+  * Qual é o maior custo da empresa hoje?
+* O técnico é *meio* para nutrir o *negócio*;
