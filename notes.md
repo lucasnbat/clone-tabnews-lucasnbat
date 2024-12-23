@@ -685,13 +685,13 @@
   configure o script:
   
   ```vim
-      "migration:create": "node-pg-migrate -m infra/migrations create"
+  "migration:create": "node-pg-migrate -m infra/migrations create"
   ```
 
 - Agora para você executar, configure esse script:
   
   ```vim
-    "migration:up": "node-pg-migrate -m infra/migrations up"
+  "migration:up": "node-pg-migrate -m infra/migrations up"
   ```
 
 - instale o dotenv e depois ajuste o script:
@@ -748,8 +748,8 @@
   - Para modificar, adicione `--runInBand` nos scripts:
     
     ```vim
-        "test": "jest --runInBand",
-        "test:watch": "jest --watchAll --runInBand",
+    "test": "jest --runInBand",
+    "test:watch": "jest --watchAll --runInBand",
     ```
 
 
@@ -781,7 +781,7 @@
 
 # Branches no Git: 3 níveis de compreensão
 
-## 1º nível de compreensão
+## 1º nível de compreensão (git copia?)
 
 - **Verificar branch**: `git branch`
   - Dá para verificar ao dar `git status` (texto aparece
@@ -790,5 +790,44 @@
 - **Trocar branch**: `git checkout tamanho-do-cabelo`
   - Tudo que for alterado, deletado, adicionado nessa branch não
     vai afetar a `main`
-  -
 
+## 2º nível de compreensão (git usa os blobs!!)
+
+- O que o git faz é só reaproveitar os blobs já existentes...
+- Ao criar nova linha do tempo ele aponta para os blobs originais...
+  novas alterações criam apenas um novo blob e o git aponta para ele
+  (aponta para um novo conjunto de blobs que é igual ao conjunto original
+  + o novo blob)
+- Ao voltar para linha do tempo original, o que acontece é o git deixar
+  de apontar para o conjunto que inclui o novo blob...ele aponta apenas
+  para o conjunto que existia antes do commit do novo blob proveniente da
+  outra branch
+- duplica apenas os commits (vamos dizer... as "anotações" do historico
+  e pra onde apontam)
+
+## 3º nível de compreensão (o "mais correto")
+
+- Git não duplica o historico de commits...ele tem um PONTEIRO chamado
+  HEAD que aponta para qual é o 'flag' do commit (se é o 'flag' main
+  ou o flag tamanho-do-cabelo)
+    - Sim, é como se o nome de cada branch fosse uma flag, um rótulo que
+      marca cada commit que você faz;
+- Os caminhos apontaveis pelo ponteiro HEAD são as heads
+  - você ve em `ls .git/refs/heads/`
+  - ```vim
+      Mode                 LastWriteTime         Length Name
+      ----                 -------------         ------ ----
+      -a----        22/12/2024     20:19             41 main
+      -a----        22/12/2024     20:18             41 tamanho-do-cabelo
+    ```
+- E se você mandar `cat .git/refs/heads/tamanho-do-cabelo` vai ver que o arquivo
+  contem um apontamento para o ultimo commit feito na branch em questão;
+- Assim, se você faz `cat .git/HEAD` ela vai apontar para o arquivo no qual
+  o ponteiro está mirando no momento e vai mostrar o conteudo dele... ou seja:
+  ```vim
+  ref: refs/heads/tamanho-do-cabelo
+  ```
+- Ao dar `git log --stat` você pode ver para onde o ponteiro HEAD está apontando;
+- Ao mudar de branch, você apenas muda para onde o ponterio HEAD está apontando..
+  ![alt text](image-2.png)
+- Dica: da para fazer mudança de branch com `git switch tamanho-do-cabelo`
