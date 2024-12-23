@@ -597,104 +597,104 @@
 
 # Análise e tratamento de erros
 
-* Ao verificar logs, busque primeiramente alguma informação que é familiar para você, que você conheça.
+- Ao verificar logs, busque primeiramente alguma informação que é familiar para você, que você conheça.
   
-  * Não tente jamais absorver o log inteiro de uma vez;
+  - Não tente jamais absorver o log inteiro de uma vez;
 
-* Comando git interessante:
+- Comando git interessante:
 
-* ```b
+- ```b
   git restore .
   ```
 
-* Esse comando permite restaurar o estado de todos os arquivos desde que não commitados ainda, pelo que entendi;
+- Esse comando permite restaurar o estado de todos os arquivos desde que não commitados ainda, pelo que entendi;
 
-* Para colocar variaveis ambiente na vercel: clique no seu project > settings > environment variables
+- Para colocar variaveis ambiente na vercel: clique no seu project > settings > environment variables
   
   ![](C:\Users\lucas\AppData\Roaming\marktext\images\2024-09-15-14-46-56-image.png)
 
-* Há três ambientes principais: Development, Preview e Production. Deixe apenas Production habilitado para essas variáveis;
+- Há três ambientes principais: Development, Preview e Production. Deixe apenas Production habilitado para essas variáveis;
 
-* Salve;
+- Salve;
 
-* Depois disso, vá em project > deployment da vercel, selecione a ultima versão do projeto > vá nos 3 pontinhos > redeploy para forçar a releitura das vars de ambiente;
+- Depois disso, vá em project > deployment da vercel, selecione a ultima versão do projeto > vá nos 3 pontinhos > redeploy para forçar a releitura das vars de ambiente;
   
-  * Não precisa colocar para aproveitar cache de build anterior, vá para deploy do zero mesmo;
+  - Não precisa colocar para aproveitar cache de build anterior, vá para deploy do zero mesmo;
 
 # Databases in Neon
 
-* Algo estranho: como é possível que, para eu me conectar com o Neon, eu precise de uma instância local rodando?
-* Seja o que for, o setup de variáveis de produção no host da nuvem (no caso,
+- Algo estranho: como é possível que, para eu me conectar com o Neon, eu precise de uma instância local rodando?
+- Seja o que for, o setup de variáveis de produção no host da nuvem (no caso,
   vercel) precisa conter os valores .env que apontam para seu banco de dados
   da nuvem;
 
 # Databases in DigitalOcean
 
-* VPS = Virtual Private Server (ou...VMs na nuvem)
-* Como funciona o ssl?
-* Todo SO vem com a detecção de chaves que são vindas de Autoridades Certificadoras
+- VPS = Virtual Private Server (ou...VMs na nuvem)
+- Como funciona o ssl?
+- Todo SO vem com a detecção de chaves que são vindas de Autoridades Certificadoras
   ou CA.
-* Um certificado autoassinado pelo provedor de nuvem geralmente pode dar problemas
+- Um certificado autoassinado pelo provedor de nuvem geralmente pode dar problemas
   porque, jsutamente, ele é *autoassinado*;
-* Ou seja, até mesmo um hacker poderia gerar um certificado autoassinado e enviar de
+- Ou seja, até mesmo um hacker poderia gerar um certificado autoassinado e enviar de
   volta para o servidor, então por padrão as aplicações bloqueiam isso;
-* É preciso enviar um certificado assinado por uma CA, para que o nosso SO, reconhecendo
+- É preciso enviar um certificado assinado por uma CA, para que o nosso SO, reconhecendo
   quais são as assinaturas das CAs, possa validar o certificado como correto e permitir
   a transmissão de informações;
-* A DigitalOcean pode, no papel de CA, emitir um certificado que só ela sabe construir
+- A DigitalOcean pode, no papel de CA, emitir um certificado que só ela sabe construir
   a assinatura, de forma que apenas o servidor dela possa decifrar e reconstruir as infor-
   mações;
-  * Com isso, nem será preciso subir na hierarquia e buscar as CAs públicas;
-* O certificado deve ser baixado por conexão segura;
-* O conteudo de um certificado geralmente é cifrado em base64 no arquivo aberto no vscode;
-* Caso um dia você vá passar um valor para uma var ambiente que carregue um certificado, 
+  - Com isso, nem será preciso subir na hierarquia e buscar as CAs públicas;
+- O certificado deve ser baixado por conexão segura;
+- O conteudo de um certificado geralmente é cifrado em base64 no arquivo aberto no vscode;
+- Caso um dia você vá passar um valor para uma var ambiente que carregue um certificado, 
   é preciso que você susbtitua todas as quebras de linha (aquele espaço invisivel no final
   de cada frase) por \n
-  * Sim, selecione todos os espaços no final de cada linha com ctrl + D, digite \n no lugar
+  - Sim, selecione todos os espaços no final de cada linha com ctrl + D, digite \n no lugar
     e pronto, obtenha sua string;
-  * cole na var ambiente com entre aspas
-* Lembre que será necessário também colar o certificado na var ambiente lá no ambiente produ-
+  - cole na var ambiente com entre aspas
+- Lembre que será necessário também colar o certificado na var ambiente lá no ambiente produ-
   ção na vercel;
 
 # Migrations
 
-* Arquivos de migração: são as alterações em si que serão aplicadas;
+- Arquivos de migração: são as alterações em si que serão aplicadas;
 
-* Framework de migração: organiza ordem de aplicação das migrações e garante que serão executadas uma única vez;
+- Framework de migração: organiza ordem de aplicação das migrações e garante que serão executadas uma única vez;
 
-* Instalar:
+- Instalar:
   
   ```powershell
   npm install node-pg-migrate@6.2.2
   ```
 
-* Configure o script `"migration:create": "node-pg-migrate create"` no `package.json` e execute:
+- Configure o script `"migration:create": "node-pg-migrate create"` no `package.json` e execute:
   
   ```powershell
   npm run migration:create first migration test
   ```
 
-* As migrations não usam o conceito de blob do git, apenas usam a diff entre uma e outra;
+- As migrations não usam o conceito de blob do git, apenas usam a diff entre uma e outra;
 
-* Conceito de:
+- Conceito de:
   
-  * Up: quando está executando em ordem crescente;
-  * Down: caso houve erro, aqui tem todas os comandos para desfazer as alterações de Up;
+  - Up: quando está executando em ordem crescente;
+  - Down: caso houve erro, aqui tem todas os comandos para desfazer as alterações de Up;
 
-* Para que as migrations destinem-se a um diretorio dentro de `infra/`, re-
+- Para que as migrations destinem-se a um diretorio dentro de `infra/`, re-
   configure o script:
   
   ```vim
       "migration:create": "node-pg-migrate -m infra/migrations create"
   ```
 
-* Agora para você executar, configure esse script:
+- Agora para você executar, configure esse script:
   
   ```vim
     "migration:up": "node-pg-migrate -m infra/migrations up"
   ```
 
-* instale o dotenv e depois ajuste o script:
+- instale o dotenv e depois ajuste o script:
   
   ```powershell
   npm install dotenv@16.4.4
@@ -704,7 +704,7 @@
     "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.development up"
   ```
 
-* Depois configure o DATABASE_URL para o pg-node-migrate no `.env.development`:
+- Depois configure o DATABASE_URL para o pg-node-migrate no `.env.development`:
   
   ```vim
   DATABASE_URL=postgres://user:password@host:port/database
@@ -712,13 +712,13 @@
 
 ## Dry run x Live run
 
-* Dry run executa as migrations "de mentira", apenas para ver qual resultado ocorre;
+- Dry run executa as migrations "de mentira", apenas para ver qual resultado ocorre;
   
-  * Termo originado no corpo de bombeiros dos EUA (Dry run = teste a seco);
+  - Termo originado no corpo de bombeiros dos EUA (Dry run = teste a seco);
 
-* Live run executa as migrations de verdade, pra valer;
+- Live run executa as migrations de verdade, pra valer;
 
-* Personalizando comando de test para apenas rodar o que tá em `migrations/`:
+- Personalizando comando de test para apenas rodar o que tá em `migrations/`:
   
   ```vim
   npm run test:watch -- migrations
@@ -726,26 +726,26 @@
 
 ## Migrations `down`
 
-* Uso:
+- Uso:
   
-  * Sensível (pode deletar estruturas de BD e DADOS nelas);
+  - Sensível (pode deletar estruturas de BD e DADOS nelas);
   
-  * Raro (ou pelo menos você vai fazer o possível para que seja);
+  - Raro (ou pelo menos você vai fazer o possível para que seja);
     
-    * Motivação para escrever cai;
+    - Motivação para escrever cai;
     
-    * Motivação para testar cai;
+    - Motivação para testar cai;
 
-* Se você quiser ver apenas o teste do post: 
+- Se você quiser ver apenas o teste do post: 
   
   ```powershell
   # isso (esse "." antes do "post")meio que é regex que captura o "/"
   npm run test:watch -- migrations.post 
   ```
 
-* Jest roda testes em paralelo.
+- Jest roda testes em paralelo.
   
-  * Para modificar, adicione `--runInBand` nos scripts:
+  - Para modificar, adicione `--runInBand` nos scripts:
     
     ```vim
         "test": "jest --runInBand",
@@ -756,25 +756,32 @@
 
 ## Fazendo `Jest` transpilar para esmodules
 
-* O jest não tem suporte ainda a esmodules (`import {} from ''`), e isso causa problemas ao importar o `database.js` para dentro de arquivos de testes;
+- O jest não tem suporte ainda a esmodules (`import {} from ''`), e isso causa problemas ao importar o `database.js` para dentro de arquivos de testes;
 
-* O `database.js` é escrito para rodar em um server web que já tem suporte a transpilação para esmodules porque roda usando as maquinarias do Next, que tem suporte para esmodules. O Jest não funciona assim;
+- O `database.js` é escrito para rodar em um server web que já tem suporte a transpilação para esmodules porque roda usando as maquinarias do Next, que tem suporte para esmodules. O Jest não funciona assim;
 
-* Então precisamos "transferir os poderes" que o Next tem para o Jest;
+- Então precisamos "transferir os poderes" que o Next tem para o Jest;
 
 ## Fazendo deploy e rodando migrations em produção
 
-* Instale: `npm install dotenv-expand@11.0.6`
-* Isso permite leitura de var ambiente dentro da variavel string de conexão
+- Instale: `npm install dotenv-expand@11.0.6`
+- Isso permite leitura de var ambiente dentro da variavel string de conexão
   com banco de dados;
-* Ex:
+- Ex:
   ```vim
   POSTGRES_USER=local_clone
   DATABASE_URL=xxxxxxxx://$POSTGRES_USER:xxxxx_xxxxx@xxxxxxxxxx:xxxx/xxxxx_xxxxx
   ```
 # Como se destacar
 
-* **Bottom line** (lucro líquido);
-  * Qual produto influencia mais o lucro líquido da empresa?
-  * Qual é o maior custo da empresa hoje?
-* O técnico é *meio* para nutrir o *negócio*;
+- **Bottom line** (lucro líquido);
+  - Qual produto influencia mais o lucro líquido da empresa?
+  - Qual é o maior custo da empresa hoje?
+- O técnico é *meio- para nutrir o *negócio*;
+
+# Branches no Git: 3 níveis de compreensão
+
+## 1º nível de compreensão
+
+- 
+
