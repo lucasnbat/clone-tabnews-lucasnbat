@@ -506,7 +506,7 @@
   cessos para que conversassem somente entre eles);
 - No docker: você só agrupa recursos já existentes na máquina
   pra rodar serviços que você quer (um container)
-  ![alt text](image.png)
+  ![alt text](images/image.png)
 - Ao entrar no terminal de um container você não está entrando
   em nada, apenas está usando um serviço com um PID de namespace
   diferente;
@@ -515,11 +515,11 @@
 
 - Dockerfile: código fonte que define comandos que vão formar
   o ambiente virtual com serviços;
-- Dockerfile precisa ser compilado numa IMAGEM (é como um .exe
+- Dockerfile precisa ser compilado numa images/imageM (é como um .exe
   que não dá para alterar)
 - Para você executar uma iamgem, um CONTAINER é usado. Um container
-  é uma imagem rodando;
-- A versão mais leve (e recomendada) da imagem do postgres é a
+  é uma images/imagem rodando;
+- A versão mais leve (e recomendada) da images/imagem do postgres é a
   Alpine;
 - COnfigure as variaveis de ambiente;
 - `docker compose up`
@@ -553,7 +553,7 @@
 - Persistência = persiste/ grava o state 
   - Masterizando: tirar a info do dispositivo e jogar na nuvem (remoto)
 - Precisamos desacoplar a camada de persistência, pois, em caso de aumento de acessos, precisamos duplicar, triplicar a camada de app sem duplicar os dados armazenados:
-  ![alt text](image-1.png)
+  ![alt text](images/image-1.png)
 - As variáveis de ambiente auxiliam a permitir esse efeito de "desacoplamento"
 
 ## Variáveis em ação no código
@@ -611,7 +611,7 @@
 
 - Para colocar variaveis ambiente na vercel: clique no seu project > settings > environment variables
   
-  ![](C:\Users\lucas\AppData\Roaming\marktext\images\2024-09-15-14-46-56-image.png)
+  ![](C:\Users\lucas\AppData\Roaming\marktext\images/images\2024-09-15-14-46-56-images/image.png)
 
 - Há três ambientes principais: Development, Preview e Production. Deixe apenas Production habilitado para essas variáveis;
 
@@ -829,7 +829,7 @@
   ```
 - Ao dar `git log --stat` você pode ver para onde o ponteiro HEAD está apontando;
 - Ao mudar de branch, você apenas muda para onde o ponterio HEAD está apontando..
-  ![alt text](image-2.png)
+  ![alt text](images/image-2.png)
 - Dica: da para fazer mudança de branch com `git switch tamanho-do-cabelo`
 
 # Fazendo deploy em Homologação (Staging)
@@ -855,9 +855,20 @@
   - o repositório local vai ter o ponteiro HEAD apontado para os commits da 
     branch de homologação(ex: fix-migrations-branch)
   - ao dar push nessa branch, ele vai gerar um commit com novo flag/marcador
-    (flag fix-migrations-branch) lá no repositório remoto (na imagem, origin)
+    (flag fix-migrations-branch) lá no repositório remoto (na images/imagem, origin)
   - e assim vamos ter as branches representadas no repositório remoto também;
-  - ![alt text](image-3.png)
+  - ![alt text](images/image-3.png)
 - Dica: `git checkout -b nome-branch` cria e troca automatico pra nova branch
 - Com `git push --set-upstream origin fix-migrations-endpoint` você empurra as 
   alterações dessa branch de teste para a origin, o repositório remoto;
+- Ao dar push numa branch que não é main, começa o deploy em ambiente homologação:
+  - ![alt text](images/image-4.png)
+- Em settings -> deployment protection a vercel disponibiliza proteção contra 
+  requisições http feitas a branchs de homologação em clients anonimos (como curl)
+    - desative para funcionar com curls do curso a esse projeto
+- Dica para ler json melhor no terminal:
+  ```vim
+  curl -s https://clone-tabnews-lucasnbat-2bq9vrmqv-lucas-nunes-batistas-projects.vercel.app/api/v1/status | python3 -m json.tool
+  ```
+  - A concatenação com `| python3 -m json.tool` faz o resultado json ir para o 
+    formatador de json disponivel no python3 do ambiente ubuntu
