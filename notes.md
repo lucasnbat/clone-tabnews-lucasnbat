@@ -783,5 +783,12 @@
 
 ## 1º nível de compreensão
 
-- 
+- **Verificar branch**: `git branch`
+  - Dá para verificar ao dar `git status` (texto aparece
+    falando "on branch main")
+- **Criar branch**: `git branch tamanho-do-cabelo`
+- **Trocar branch**: `git checkout tamanho-do-cabelo`
+  - Tudo que for alterado, deletado, adicionado nessa branch não
+    vai afetar a `main`
+  -
 
