@@ -831,3 +831,33 @@
 - Ao mudar de branch, você apenas muda para onde o ponterio HEAD está apontando..
   ![alt text](image-2.png)
 - Dica: da para fazer mudança de branch com `git switch tamanho-do-cabelo`
+
+# Fazendo deploy em Homologação (Staging)
+
+- Vercel:
+  - `push` para branch main -> deploy em ambiente de produção
+  - `push` para outra branch -> deploy em ambiente de homologação
+- Vercel verifica:
+  - Variaveis cadastradas na categoria production: ambiente produção usa
+  - Variaveis cadastradas na categoria preview: ambiente homologação usa
+- Configuração:
+  - Vá no Neon e crie uma nova database dentro do banco que você já tem
+    (meu caso: coopplatform)
+  - Depois copie os parâmetros da nova database (vá para opção Parameters
+    Only, permita revelar a senha)
+  - Vá na vercel, clique no seu projeto -> settings -> environment variables
+    -> selecione apenas 'preview' (ambiente de homologação) e cole tudo dentro
+    da seção onde tem campos de nome e valor para variaveis
+    - Se certifique de que o nome das var estão corretos
+    - Lembre de inserir a porta do banco (nosso caso: POSTGRES_PORT com valor
+      5432)
+- Como funciona:
+  - o repositório local vai ter o ponteiro HEAD apontado para os commits da 
+    branch de homologação(ex: fix-migrations-branch)
+  - ao dar push nessa branch, ele vai gerar um commit com novo flag/marcador
+    (flag fix-migrations-branch) lá no repositório remoto (na imagem, origin)
+  - e assim vamos ter as branches representadas no repositório remoto também;
+  - ![alt text](image-3.png)
+- Dica: `git checkout -b nome-branch` cria e troca automatico pra nova branch
+- Com `git push --set-upstream origin fix-migrations-endpoint` você empurra as 
+  alterações dessa branch de teste para a origin, o repositório remoto;
