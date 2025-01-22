@@ -872,3 +872,27 @@
   ```
   - A concatenação com `| python3 -m json.tool` faz o resultado json ir para o 
     formatador de json disponivel no python3 do ambiente ubuntu
+
+# Como não perder código com git
+
+- Deletar branches: `git branch -d tamanho-do-cabelo`;
+- Deletar branches (forçar): `git branch -D tamanho-do-cabelo`;
+- Se você deletou a branch de um commit precioso, basta pegar o hash
+  desse commit a partir do `git log` e depois fazer um `git checkout <hash>`
+  - Na verdade, para alguns casos é melhor fazer o `git reflog` e buscar 
+    hash do commit (buscando a mensagem original do commit nos registros)
+- Isso fará com que o ponteiro HEAD se desloque para o commit
+  - A diferença é que agora o ponteiro aponta apenas para o commit livre-
+    mente (hash) ao inves de apontar para a branch e o commit (fix-migrations-
+    endpoint + hash);
+  - Esse commit está "pending" porque ele não está associado a branch nenhuma.
+  - Ou seja, **ao deletar a branch você não deleta commit**, apenas o ponteiro
+    da branch. O commit fica livre "vagando" e é descartado pelo garbage colec-
+    tor do git após 14 dias (tempo que pode ser alterado);
+- Para "ressuscitar" a branch você faz, depois do `git checkout <hash>`, um
+  `git checkout -b fix-migrations-endpoint`;
+  - Isso criará um ponteiro de branch comm esse nome novamente e o associará ao
+    commit;
+- Se você não quer fazer o git checkout para hash e depois associar, pode fazer
+  com um único comando: `git checkout -b fix-migrations-endpoint <hash>`
+- Assim você criará uma branch nova com base no commit que tem o hash passado;
