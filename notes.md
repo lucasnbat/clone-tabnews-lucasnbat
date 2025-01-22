@@ -950,4 +950,23 @@
   - Software entregue mais que documentação;
   - Colaboração com clientes mais que negociação de contratos;
   - Resposta a mudança mais que seguir o plano;
-- 
+
+# Continuous Integration, Delivery e Deployment
+
+- Criação de DevOps (2007);
+  - A ideia é uma cultura de juntar desenvolvimento e operações nos
+    processos de criação de software;
+    - A área de validação vai junto tambem para automatizar tudo e reduzir
+      o ciclo de feedback (tempo para a feature chegar no cliente e validar);
+- Integração contínua:
+  - Fazer o trabalho e obter feedback do cliente rapidamente para integrar
+    no projeto final;
+  - Foi preciso ter ferramentas de integração contínua;
+- Etapas automatizadas desde então:
+  - Build dos arquivos -> automatização de build; (parte do continous integration)
+  - Etapa de validação -> testes automatizados; (parte do continous integration)
+  - Fazer o deploy -> rotinas de CD, onde há opção de você escolher se vai fazer
+    deploy manual ou não (etapa de continuos delivery)
+- Continuous Deployment (CD também) -> automatização do deploy. Ao contrario do
+  Continuous Delivery, aqui o deploy é automático, sem escolha manual;
+
