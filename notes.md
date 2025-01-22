@@ -928,3 +928,26 @@
   // se quiser determinar que vai att. de 1s em 1s:
   watch -n 1 'curl -s https://coopplatform.com.br/api/v1/status | jq'
   ```
+
+# Nascimento e "Morte" do Movimento Ágil
+
+- Waterfall
+  - LEvantamento de requisitos: RF e RNFs do sistema, o que ele se propunha
+    a resolver;
+  - Projeto: Diagramas de casos de uso, UML, bancos de dados a usar, paradig-
+    mas...
+  - Implementação: Desenvolvedores pegavam a documentação do projeto, desenvol-
+    viam tudo e entregavam compilado em um artefato;
+  - Validação: Um time pegava o artefato com os programas e validava do inicio
+    ao fim, caso tudo estivesse OK, era marcado como válido;
+  - Implantação: time de Operações fazia todos os ajustes necessários para ins-
+    talação do produto de software na infraestrutura da empresa (servers de 
+    produção);
+- Tudo entregue de uma vez só; linear e sequencial; 
+- Programadores ficavam limitados no meio apenas na implementação;
+- Manifesto ágil:
+  - Individuos e interações mais que processos e ferramentas;
+  - Software entregue mais que documentação;
+  - Colaboração com clientes mais que negociação de contratos;
+  - Resposta a mudança mais que seguir o plano;
+- 
