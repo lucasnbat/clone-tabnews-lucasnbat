@@ -896,3 +896,35 @@
 - Se você não quer fazer o git checkout para hash e depois associar, pode fazer
   com um único comando: `git checkout -b fix-migrations-endpoint <hash>`
 - Assim você criará uma branch nova com base no commit que tem o hash passado;
+
+# Formas de merge
+
+- Fast foward e 3-Way Merge
+- Mesclar é só fazer o ponteiro da main apontar para o commit que
+  você fez na branch de teste para arrumar o programa;
+- Existe branch alvo (target) e a branch fonte (source):
+  - Basicamente você precisa ir para a branch que vai ficar com todas
+    as alterações e commits (no caso, main) e fazer 
+    `git merge fix-migrations-endpoint`
+  - Com isso, você está trazendo para a branch alvo (main) os commits
+    da branch source (fix-migrations-endpoint)
+- O que o git faz é mover o HEAD para a main e depois fazer o ponteiro
+  da main apontar para o commit da fix-migrations-enpoint
+- ```vim
+    commit a6c180fd59ac066033bac8922692fd6eb9b1bb6b (HEAD -> main, origin/fix-migrations-endpoint, fix-migrations-endpoint)
+  ```
+- Dando olhada ali acima, pode ver que agora o HEAD aponta para a main (e
+  ela está apontando para esse commit), o repositório remoto com sua branch fix-migrations-endpoint tambem aponta para esse commit, e o repositorio
+  local fix-migrations-endpoint tambem aponta para esse commit;
+- `git log --graph` mostra os ramos graficamente;
+- **Esse "atualizar a referência" é o modo fast-foward**
+- Dica: forma nova de conseguir formatar json via terminal 
+  ```vim
+  curl -s https://coopplatform.com.br/api/v1/status | jq
+
+  // se você quiser vigiar a resposta de 2s em 2s:
+  watch 'curl -s https://coopplatform.com.br/api/v1/status | jq'
+
+  // se quiser determinar que vai att. de 1s em 1s:
+  watch -n 1 'curl -s https://coopplatform.com.br/api/v1/status | jq'
+  ```
