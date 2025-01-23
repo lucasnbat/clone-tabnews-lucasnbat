@@ -751,9 +751,6 @@
     "test": "jest --runInBand",
     "test:watch": "jest --watchAll --runInBand",
     ```
-
-
-
 ## Fazendo `Jest` transpilar para esmodules
 
 - O jest não tem suporte ainda a esmodules (`import {} from ''`), e isso causa problemas ao importar o `database.js` para dentro de arquivos de testes;
@@ -761,6 +758,8 @@
 - O `database.js` é escrito para rodar em um server web que já tem suporte a transpilação para esmodules porque roda usando as maquinarias do Next, que tem suporte para esmodules. O Jest não funciona assim;
 
 - Então precisamos "transferir os poderes" que o Next tem para o Jest;
+
+- Isso é feito por meio das configurações que estão no arquivo `jest.config.js`
 
 ## Fazendo deploy e rodando migrations em produção
 
@@ -969,4 +968,78 @@
     deploy manual ou não (etapa de continuos delivery)
 - Continuous Deployment (CD também) -> automatização do deploy. Ao contrario do
   Continuous Delivery, aqui o deploy é automático, sem escolha manual;
+
+# Estratégia de branching
+
+- São elas:
+  - Trunk based development
+  - Feature Branch
+    - Github Flow;
+  - Git Flow
+  - Trunk based development (de novo)
+- **Trunk based development**
+  - Usa de base o tronco/trunk/mainline (main)
+  - Modifica em branches diferentes, depois faz merge nele local e depois
+    empurra para o origin/main(remoto)
+  - Isso leva para a Feature branch...
+- **Feature branch**:
+  - A cada modificação do sistema você cria branch, resolve e depois você
+    revisa (se existe conflitos) e faz merge em main
+  - A main é encarada como a versão PRONTA PRA PRODUÇÃO;
+  - Isso gera o ...
+  - Github Flow
+    - Basicamente tem a feture branch, faz pull, usa vários métodos de revisão
+      para verificar se pode ou não fazer merge e depois faz o merge;
+- **Git Flow**:
+  - ![alt text](images/image-5.png)
+  - Você tem uma main onde ninguém toca;
+  - Tem a branch develop que herda o estado da main e quase sempre é uma copia
+    dela usada para desenvolvimento
+  - A branch feature é a aberta para novas funcionalidades, e sempre que é
+    aprovada você passa para a branch develop, depois passa para uma branch
+    chamada release, onde, se tudo for aprovado, é feito merge na main e na 
+    develop;
+  - Em casos de bugs criticos, é feito branch hotfix, onde, se a alteração é
+    aprovada, é feito merge no main e na develop também;
+- O ideal é cada time sempre mergear no trunk para que todos os outros timese
+  tenham as alterações mais recentes da main para eles, assim, reduz a entropia
+  entre os times e as chances de dar problemas;
+    - Isso pode ser feito com feature flags, onde você faz com que o código
+      novo inserido não seja funcional, não apareça, não seja usável pelo usu-
+      ário;
+  - **Branch By Abstraction** é uma abordagem melhor:
+    - Suponha que existe o módulo X e que há os programas Y e Z dependendo
+      dele;
+    - Primeiro você cria uma abstração de módulo que está apontando para o
+      módulo antigo, faz merge no trunk;
+    - Após isso, conecta o programa Y na abstração e vê se funciona. Se sim,
+      faz merge no trunk. Agora conecta o Z e verifica se funciona. Se sim, 
+      faz novo merge no trunk;
+    - Depois implementa o novo módulo que vai substituir o antigo;
+    - Muda o apontadmento da abstração para o módulo novo;
+    - Remove o módulo antigo e a depender até a abstração (nesse caso é feita
+      a associação direta dos programas Y e Z com o módulo novo);
+    - Veja que aqui o commit não precisa representar algo "pronto" e sim algo
+      "mergeável" na branch, ou seja, que vai representar um avanço sem quebrar
+      tudo que já funciona;
+  - **Pair programming**: 
+    - programação em par para evitar a necessidade de revisão e fazer 
+      merges ao trunk mais agilmente;
+  - Em algumas situações é criada uma branch de release para estacionar e 
+    verificar todas as features novas para passar por testes, garantir que
+    uma não afeta a outra e por fim fazer deploy; 
+      - Isso enquanto o trunk evolui com novas integrações de merges 
+- Usaremos *feature branch* + *github flow*;
+- Lembre que CI (continuous integration) é a ação de gerar features, validar
+  e integrar ao programa, e quanto mais lento esse processo, maior a possibili-
+  dade de conflito entre os times nas entregas;
+    - Mas a área em geral fala de CI como se fosse um servidor que tem todos os
+      testes e valida as coisas integrando automaticamente (lógica errada mas
+      que é a mais comunicável).
+
+
+
+
+
+  
 
