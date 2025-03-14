@@ -751,7 +751,8 @@
     "test": "jest --runInBand",
     "test:watch": "jest --watchAll --runInBand",
     ```
-## Fazendo `Jest` transpilar para esmodules
+    
+    ## Fazendo `Jest` transpilar para esmodules
 
 - O jest não tem suporte ainda a esmodules (`import {} from ''`), e isso causa problemas ao importar o `database.js` para dentro de arquivos de testes;
 
@@ -764,18 +765,24 @@
 ## Fazendo deploy e rodando migrations em produção
 
 - Instale: `npm install dotenv-expand@11.0.6`
+
 - Isso permite leitura de var ambiente dentro da variavel string de conexão
   com banco de dados;
+
 - Ex:
+  
   ```vim
   POSTGRES_USER=local_clone
   DATABASE_URL=xxxxxxxx://$POSTGRES_USER:xxxxx_xxxxx@xxxxxxxxxx:xxxx/xxxxx_xxxxx
   ```
-# Como se destacar
+  
+  # Como se destacar
 
 - **Bottom line** (lucro líquido);
+  
   - Qual produto influencia mais o lucro líquido da empresa?
   - Qual é o maior custo da empresa hoje?
+
 - O técnico é *meio- para nutrir o *negócio*;
 
 # Branches no Git: 3 níveis de compreensão
@@ -809,9 +816,12 @@
 - Git não duplica o historico de commits...ele tem um PONTEIRO chamado
   HEAD que aponta para qual é o 'flag' do commit (se é o 'flag' main
   ou o flag tamanho-do-cabelo)
-    - Sim, é como se o nome de cada branch fosse uma flag, um rótulo que
-      marca cada commit que você faz;
+  
+  - Sim, é como se o nome de cada branch fosse uma flag, um rótulo que
+    marca cada commit que você faz;
+
 - Os caminhos apontaveis pelo ponteiro HEAD são as heads
+  
   - você ve em `ls .git/refs/heads/`
   - ```vim
       Mode                 LastWriteTime         Length Name
@@ -819,27 +829,38 @@
       -a----        22/12/2024     20:19             41 main
       -a----        22/12/2024     20:18             41 tamanho-do-cabelo
     ```
+
 - E se você mandar `cat .git/refs/heads/tamanho-do-cabelo` vai ver que o arquivo
   contem um apontamento para o ultimo commit feito na branch em questão;
+
 - Assim, se você faz `cat .git/HEAD` ela vai apontar para o arquivo no qual
   o ponteiro está mirando no momento e vai mostrar o conteudo dele... ou seja:
+  
   ```vim
   ref: refs/heads/tamanho-do-cabelo
   ```
+
 - Ao dar `git log --stat` você pode ver para onde o ponteiro HEAD está apontando;
+
 - Ao mudar de branch, você apenas muda para onde o ponterio HEAD está apontando..
   ![alt text](images/image-2.png)
+
 - Dica: da para fazer mudança de branch com `git switch tamanho-do-cabelo`
 
 # Fazendo deploy em Homologação (Staging)
 
 - Vercel:
+  
   - `push` para branch main -> deploy em ambiente de produção
   - `push` para outra branch -> deploy em ambiente de homologação
+
 - Vercel verifica:
+  
   - Variaveis cadastradas na categoria production: ambiente produção usa
   - Variaveis cadastradas na categoria preview: ambiente homologação usa
+
 - Configuração:
+  
   - Vá no Neon e crie uma nova database dentro do banco que você já tem
     (meu caso: coopplatform)
   - Depois copie os parâmetros da nova database (vá para opção Parameters
@@ -850,25 +871,36 @@
     - Se certifique de que o nome das var estão corretos
     - Lembre de inserir a porta do banco (nosso caso: POSTGRES_PORT com valor
       5432)
+
 - Como funciona:
+  
   - o repositório local vai ter o ponteiro HEAD apontado para os commits da 
     branch de homologação(ex: fix-migrations-branch)
   - ao dar push nessa branch, ele vai gerar um commit com novo flag/marcador
     (flag fix-migrations-branch) lá no repositório remoto (na images/imagem, origin)
   - e assim vamos ter as branches representadas no repositório remoto também;
   - ![alt text](images/image-3.png)
+
 - Dica: `git checkout -b nome-branch` cria e troca automatico pra nova branch
+
 - Com `git push --set-upstream origin fix-migrations-endpoint` você empurra as 
   alterações dessa branch de teste para a origin, o repositório remoto;
+
 - Ao dar push numa branch que não é main, começa o deploy em ambiente homologação:
+  
   - ![alt text](images/image-4.png)
+
 - Em settings -> deployment protection a vercel disponibiliza proteção contra 
   requisições http feitas a branchs de homologação em clients anonimos (como curl)
-    - desative para funcionar com curls do curso a esse projeto
+  
+  - desative para funcionar com curls do curso a esse projeto
+
 - Dica para ler json melhor no terminal:
+  
   ```vim
   curl -s https://clone-tabnews-lucasnbat-2bq9vrmqv-lucas-nunes-batistas-projects.vercel.app/api/v1/status | python3 -m json.tool
   ```
+  
   - A concatenação com `| python3 -m json.tool` faz o resultado json ir para o 
     formatador de json disponivel no python3 do ambiente ubuntu
 
@@ -899,31 +931,41 @@
 # Formas de merge
 
 - Fast foward e 3-Way Merge
+
 - Mesclar é só fazer o ponteiro da main apontar para o commit que
   você fez na branch de teste para arrumar o programa;
+
 - Existe branch alvo (target) e a branch fonte (source):
+  
   - Basicamente você precisa ir para a branch que vai ficar com todas
     as alterações e commits (no caso, main) e fazer 
     `git merge fix-migrations-endpoint`
   - Com isso, você está trazendo para a branch alvo (main) os commits
     da branch source (fix-migrations-endpoint)
+
 - O que o git faz é mover o HEAD para a main e depois fazer o ponteiro
   da main apontar para o commit da fix-migrations-enpoint
+
 - ```vim
     commit a6c180fd59ac066033bac8922692fd6eb9b1bb6b (HEAD -> main, origin/fix-migrations-endpoint, fix-migrations-endpoint)
   ```
+
 - Dando olhada ali acima, pode ver que agora o HEAD aponta para a main (e
   ela está apontando para esse commit), o repositório remoto com sua branch fix-migrations-endpoint tambem aponta para esse commit, e o repositorio
   local fix-migrations-endpoint tambem aponta para esse commit;
+
 - `git log --graph` mostra os ramos graficamente;
+
 - **Esse "atualizar a referência" é o modo fast-foward**
+
 - Dica: forma nova de conseguir formatar json via terminal 
+  
   ```vim
   curl -s https://coopplatform.com.br/api/v1/status | jq
-
+  
   // se você quiser vigiar a resposta de 2s em 2s:
   watch 'curl -s https://coopplatform.com.br/api/v1/status | jq'
-
+  
   // se quiser determinar que vai att. de 1s em 1s:
   watch -n 1 'curl -s https://coopplatform.com.br/api/v1/status | jq'
   ```
@@ -1004,42 +1046,48 @@
 - O ideal é cada time sempre mergear no trunk para que todos os outros timese
   tenham as alterações mais recentes da main para eles, assim, reduz a entropia
   entre os times e as chances de dar problemas;
-    - Isso pode ser feito com feature flags, onde você faz com que o código
-      novo inserido não seja funcional, não apareça, não seja usável pelo usu-
-      ário;
-  - **Branch By Abstraction** é uma abordagem melhor:
-    - Suponha que existe o módulo X e que há os programas Y e Z dependendo
-      dele;
-    - Primeiro você cria uma abstração de módulo que está apontando para o
-      módulo antigo, faz merge no trunk;
-    - Após isso, conecta o programa Y na abstração e vê se funciona. Se sim,
-      faz merge no trunk. Agora conecta o Z e verifica se funciona. Se sim, 
-      faz novo merge no trunk;
-    - Depois implementa o novo módulo que vai substituir o antigo;
-    - Muda o apontadmento da abstração para o módulo novo;
-    - Remove o módulo antigo e a depender até a abstração (nesse caso é feita
-      a associação direta dos programas Y e Z com o módulo novo);
-    - Veja que aqui o commit não precisa representar algo "pronto" e sim algo
-      "mergeável" na branch, ou seja, que vai representar um avanço sem quebrar
-      tudo que já funciona;
-  - **Pair programming**: 
-    - programação em par para evitar a necessidade de revisão e fazer 
-      merges ao trunk mais agilmente;
-  - Em algumas situações é criada uma branch de release para estacionar e 
-    verificar todas as features novas para passar por testes, garantir que
-    uma não afeta a outra e por fim fazer deploy; 
-      - Isso enquanto o trunk evolui com novas integrações de merges 
+  - Isso pode ser feito com feature flags, onde você faz com que o código
+    novo inserido não seja funcional, não apareça, não seja usável pelo usu-
+    ário;
+    - **Branch By Abstraction** é uma abordagem melhor:
+  - Suponha que existe o módulo X e que há os programas Y e Z dependendo
+    dele;
+  - Primeiro você cria uma abstração de módulo que está apontando para o
+    módulo antigo, faz merge no trunk;
+  - Após isso, conecta o programa Y na abstração e vê se funciona. Se sim,
+    faz merge no trunk. Agora conecta o Z e verifica se funciona. Se sim, 
+    faz novo merge no trunk;
+  - Depois implementa o novo módulo que vai substituir o antigo;
+  - Muda o apontadmento da abstração para o módulo novo;
+  - Remove o módulo antigo e a depender até a abstração (nesse caso é feita
+    a associação direta dos programas Y e Z com o módulo novo);
+  - Veja que aqui o commit não precisa representar algo "pronto" e sim algo
+    "mergeável" na branch, ou seja, que vai representar um avanço sem quebrar
+    tudo que já funciona;
+    - **Pair programming**: 
+  - programação em par para evitar a necessidade de revisão e fazer 
+    merges ao trunk mais agilmente;
+    - Em algumas situações é criada uma branch de release para estacionar e 
+      verificar todas as features novas para passar por testes, garantir que
+      uma não afeta a outra e por fim fazer deploy; 
+    - Isso enquanto o trunk evolui com novas integrações de merges 
 - Usaremos *feature branch* + *github flow*;
 - Lembre que CI (continuous integration) é a ação de gerar features, validar
   e integrar ao programa, e quanto mais lento esse processo, maior a possibili-
   dade de conflito entre os times nas entregas;
-    - Mas a área em geral fala de CI como se fosse um servidor que tem todos os
-      testes e valida as coisas integrando automaticamente (lógica errada mas
-      que é a mais comunicável).
+  - Mas a área em geral fala de CI como se fosse um servidor que tem todos os
+    testes e valida as coisas integrando automaticamente (lógica errada mas
+    que é a mais comunicável).
 
+## Estabilizar "npm run dev"
 
+* Race condition: quando para um programa funcionar há dependencia entre o resultado de uma etapa anterior e a posterior (ex: para migration rodar é preciso que a etapa de subir o banco esteja pronta);
 
-
-
+* Stdout e Stderr são canais de comunicação padrão dos programas usados para separar logs de funcionamento de logs de erro:
   
+  * Stdout = standard output
+  
+  * Stderr = standart errors
 
+* `docker system prune -a`: comando para deletar todas os containers e imagens baixadas (agressivo ao extremo)
+* No `git diff`, as vezes a linha de vermelho só significa que ela foi substituida por uma versão diferente, não necessariamente deletada.

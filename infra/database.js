@@ -1,5 +1,6 @@
 import { Client } from 'pg'
 
+// funções para realizar querys
 async function query(queryObject) {
   let client
   try {
@@ -16,6 +17,7 @@ async function query(queryObject) {
   }
 }
 
+// criação de client
 async function getNewClient() {
   const client = new Client({
     host: process.env.POSTGRES_HOST,
@@ -36,6 +38,8 @@ export default {
   getNewClient,
 }
 
+// função para lidar com parametro ssl do client
+// se for ambiente de prod, ssl: true
 function getSSLValues() {
   //caso tenha certificado de uma CA...
   if (process.env.POSTGRES_CA) {
